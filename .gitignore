@@ -2,6 +2,7 @@ __pycache__/
 .vscode
 bin/
 lib/
+lib64/
 include/
 .env
 pyvenv.cfg
