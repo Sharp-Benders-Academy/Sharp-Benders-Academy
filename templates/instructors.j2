@@ -1,0 +1,199 @@
+{% extends 'base.html' %}
+
+{% block title %}Instructors{% endblock %}
+
+{% block navlinks %}
+<div class="navbar-nav nav-tabs">
+    <a class="nav-link mx-3" aria-current="page" href="/">Home</a>
+    <a class="nav-link" aria-current="page" href="students">Students</a>
+    <a class="nav-link" href="majors">Majors</a>
+    <a class="nav-link" href="advisors">Advisors</a>
+    <a class="nav-link active" href="instructors">Instructors</a>
+    <a class="nav-link" href="courses">Courses</a>
+    <a class="nav-link" href="courses_instructors">Courses_Instructors</a>
+    <a class="nav-link" href="registrations">Registrations</a>
+    <a class="nav-link" href="semesters">Semesters</a>
+    <a class="nav-link" href="grades">Grades</a>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid text-center">
+    <h1 class="display-5">Instructors</h1>
+    <p class="text-muted">View or add instructors</p>
+</div>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Address Line 1</th>
+            <th scope="col">Address Line 2</th>
+            <th scope="col">City</th>
+            <th scope="col">State</th>
+            <th scope="col">Postal Code</th>
+            <!-- <th scope="col"> </th>
+            <th scope="col"> </th> -->
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Katara</td>
+            <td>Williams</td>
+            <td>kwilliams@sharpbenders.edu</td>
+            <td>941-764-8916</td>
+            <td>641 Otterville Ln</td>
+            <td>NULL</td>
+            <td>Bend</td>
+            <td>Oregon</td>
+            <td>97701</td>
+            <!-- <td>Edit</td>
+            <td>Delete</td> -->
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Sokka</td>
+            <td>Brown</td>
+            <td>sbrown@sharpbenders.edu</td>
+            <td>461-764-4512</td>
+            <td>2831 Fur Ct</td>
+            <td>Apt 312</td>
+            <td>Astoria</td>
+            <td>Oregon</td>
+            <td>97103</td>
+            <!-- <td>Edit</td>
+            <td>Delete</td> -->
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Azula</td>
+            <td>Stone</td>
+            <td>astone@sharpbenders.edu</td>
+            <td>741-745-6421</td>
+            <td>463 Rainy Blvd</td>
+            <td>NULL</td>
+            <td>Eugene</td>
+            <td>Oregon</td>
+            <td>97401</td>
+            <!-- <td>Edit</td>
+            <td>Delete</td> -->
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<div class="container-fluid">
+
+    <form class="form-horizontal">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>Add Instructor</legend>
+
+            <!-- Text input-->
+            <div class="form-group py-2">
+                <label class="col-md-4 control-label" for="fname">First Name</label>
+                <div class="col-md-4">
+                    <input id="fname" name="fname" type="text" placeholder="" class="form-control input-md" required="">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group py-2">
+                <label class="col-md-4 control-label" for="lname">Last Name</label>
+                <div class="col-md-4">
+                    <input id="lname" name="lname" type="text" placeholder="" class="form-control input-md" required="">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group py-2">
+                <label class="col-md-4 control-label" for="email">Email</label>
+                <div class="col-md-4">
+                    <input id="email" name="email" type="text" placeholder="" class="form-control input-md" required="">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group py-2">
+                <label class="col-md-4 control-label" for="phone">Phone</label>
+                <div class="col-md-2">
+                    <input id="phone" name="phone" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                        placeholder="XXX-XXX-XXXX" class="form-control input-md" required="">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group py-2">
+                <label class="col-md-4 control-label" for="aline1">Address Line 1</label>
+                <div class="col-md-4">
+                    <input id="aline1" name="aline1" type="text" placeholder="" class="form-control input-md"
+                        required="">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group py-2">
+                <label class="col-md-4 control-label" for="aline2">Address Line 2</label>
+                <div class="col-md-4">
+                    <input id="aline2" name="aline2" type="text" placeholder="" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group py-2">
+                <label class="col-md-4 control-label" for="city">City</label>
+                <div class="col-md-2">
+                    <input id="city" name="city" type="text" placeholder="" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group py-2">
+                <label class="col-md-4 control-label" for="state">State</label>
+                <div class="col-md-2">
+                    <input id="state" name="state" type="text" placeholder="" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group pt-2">
+                <label class="col-md-4 control-label" for="postal">Postal Code</label>
+                <div class="col-md-2">
+                    <input id="postal" name="postal" type="text" pattern="[0-9]{5}" class="form-control input-md">
+
+                </div>
+            </div>
+
+
+
+            <!-- Button -->
+            <div class="form-group pb-2">
+                <label class="col-md-4 control-label" for="submit"></label>
+                <div class="col-md-4">
+                    <button id="submit" name="submit" class="btn btn-primary">Add Instructor</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+
+
+</div>
+
+{% endblock %}

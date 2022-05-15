@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+
+{% block title %}Students{% endblock %}
+
+{% block navlinks %}
+<div class="navbar-nav nav-tabs">
+    <a class="nav-link mx-3" aria-current="page" href="/">Home</a>
+    <a class="nav-link active" aria-current="page" href="students">Students</a>
+    <a class="nav-link" href="majors">Majors</a>
+    <a class="nav-link" href="advisors">Advisors</a>
+    <a class="nav-link" href="instructors">Instructors</a>
+    <a class="nav-link" href="courses">Courses</a>
+    <a class="nav-link" href="courses_instructors">Courses_Instructors</a>
+    <a class="nav-link" href="registrations">Registrations</a>
+    <a class="nav-link" href="semesters">Semesters</a>
+    <a class="nav-link" href="grades">Grades</a>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid text-center">
+    <h1 class="display-5">Students</h1>
+    <p class="text-muted">View or add students</p>
+</div>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            {% for key in students[0].keys() %}
+
+            <th scope="col"> {{ key }} </th>
+
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+        <tr>
+            {% for key in student.keys() %}
+
+            <td>{{student[key]}}
+                {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<hr>
+
+<!-- Insert student -->
+<div class="container-fluid">
+
+    <form action="/students" method="post" class="form-horizontal">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>Add Student</legend>
+
+            <!-- Text input-->
+            <div class="form-group py-2">
+                <label class="col-md-4 control-label" for="fname">First Name</label>
+                <div class="col-md-4">
+                    <input id="fname" name="fname" type="text" placeholder="" class="form-control input-md" required="">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group py-2">
+                <label class="col-md-4 control-label" for="lname">Last Name</label>
+                <div class="col-md-4">
+                    <input id="lname" name="lname" type="text" placeholder="" class="form-control input-md" required="">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group py-2">
+                <label class="col-md-4 control-label" for="email">Email</label>
+                <div class="col-md-4">
+                    <input id="email" name="email" type="text" placeholder="" class="form-control input-md" required="">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group py-2">
+                <label class="col-md-4 control-label" for="phone">Phone</label>
+                <div class="col-md-2">
+                    <input id="phone" name="phone" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                        placeholder="XXX-XXX-XXXX" class="form-control input-md" required="">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group py-2">
+                <label class="col-md-4 control-label" for="aline1">Address Line 1</label>
+                <div class="col-md-4">
+                    <input id="aline1" name="aline1" type="text" placeholder="" class="form-control input-md"
+                        required="">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group py-2">
+                <label class="col-md-4 control-label" for="aline2">Address Line 2</label>
+                <div class="col-md-4">
+                    <input id="aline2" name="aline2" type="text" placeholder="" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group py-2">
+                <label class="col-md-4 control-label" for="city">City</label>
+                <div class="col-md-2">
+                    <input id="city" name="city" type="text" placeholder="" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group py-2">
+                <label class="col-md-4 control-label" for="state">State</label>
+                <div class="col-md-2">
+                    <input id="state" name="state" type="text" placeholder="" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group py-2">
+                <label class="col-md-4 control-label" for="postal">Postal Code</label>
+                <div class="col-md-2">
+                    <input id="postal" name="postal" type="text" pattern="[0-9]{5}" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Select Basic -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="major">Select Major</label>
+                <div class="col-md-4">
+                    <select id="major" name="major" class="form-control">
+                        {% for major in majors %}
+                        <option value="{{ major.major_id }}">{{ major.title }}</option>
+                        {% endfor %}
+                        <option value="NULL">No Major</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Select Basic -->
+            <div class="form-group py-2">
+                <label class="col-md-4 control-label" for="advisor">Select Advisor</label>
+                <div class="col-md-4">
+                    <select id="advisor" name="advisor" class="form-control">
+                        {% for advisor in advisors %}
+                        <option value="{{ advisor.advisor_id }}">{{ advisor.Advisor }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group pb-2">
+                <label class="col-md-4 control-label" for="submit"></label>
+                <div class="col-md-4">
+                    <button type="submit" id="submit" name="Add_Student" class="btn btn-primary">Add Student</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+
+
+</div>
+
+{% endblock %}
