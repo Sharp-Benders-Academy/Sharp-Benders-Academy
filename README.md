@@ -7,7 +7,7 @@ Web application to manage data for a school system. Created using Python, Flask,
 
 ## Getting started
 
-- CD to directory on flip servers
+- CD to directory on flip servers, then clone git repo
 - Install python virtual environment module
 ```bash
 pip3 install --user virtualenv
