@@ -65,20 +65,19 @@ def students():
     cursor = db.execute_query(db_connection=db_connection, query=query)
     students = cursor.fetchall()
 
-    print(students)
-
     # Populate Majors dropdown
     query2 = 'SELECT major_id, title FROM Majors;'
     cursor = db.execute_query(db_connection=db_connection, query=query2)
     majors = cursor.fetchall()
-
-    print(majors)
 
     # Populate Advisors dropdown
     query3 = "SELECT advisor_id, CONCAT(first_name, ' ', last_name) AS Advisor FROM Advisors;"
     cursor = db.execute_query(db_connection=db_connection, query=query3)
     advisors = cursor.fetchall()
 
+    # REMOVE
+    print(students)
+    print(majors)
     print(advisors)
 
     # Sends the results back to the web browser.

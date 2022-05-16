@@ -23,7 +23,7 @@ source ./venv/bin/activate
 ```bash
 pip3 install -r requirements.txt
 ```
-- Create .env file with below credentials for database access
+- Create .env file in root directory with below credentials for database access
 ```text
 340DBHOST=classmysql.engr.oregonstate.edu
 340DBUSER=cs340_lastnamef
