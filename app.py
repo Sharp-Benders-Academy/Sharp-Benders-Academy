@@ -113,6 +113,7 @@ def majors():
     cursor = db.execute_query(db_connection=db_connection, query=query)
     majors = cursor.fetchall()
 
+    # REMOVE
     print(majors)
 
     return render_template("majors.j2", majors=majors)
@@ -120,7 +121,49 @@ def majors():
 
 @app.route('/advisors', methods=['POST', 'GET'])
 def advisors():
-    return render_template("advisors.j2")
+
+    db_connection.ping(True)  # ping to avoid timeout
+
+    if request.method == "POST":
+        fname = request.form["fname"]
+        lname = request.form["lname"]
+        email = request.form["email"]
+        phone = request.form["phone"]
+        aline1 = request.form["aline1"]
+        aline2 = request.form["aline2"]
+        city = request.form["city"]
+        state = request.form["state"]
+        postal = request.form["postal"]
+
+        query = '''
+        INSERT INTO Advisors 
+        (first_name, last_name, school_email, 
+        phone_number, address_line1, address_line2, 
+        city, state, postal_code) 
+        VALUES 
+        (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+        '''
+
+        cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(
+            fname, lname, email, phone, aline1, aline2, city, state, postal))
+
+        return redirect("/advisors")
+
+    # Populate Advisors table
+    query = '''
+    SELECT advisor_id AS ID, first_name AS First, last_name AS Last, school_email AS Email, phone_number AS Phone, 
+    address_line1 AS "Address Line 1", address_line2 AS "Address Line 2", 
+    city AS City, state AS State, postal_code AS "Postal Code"
+    FROM Advisors
+    '''
+
+    cursor = db.execute_query(db_connection=db_connection, query=query)
+    advisors = cursor.fetchall()
+
+    # REMOVE
+    print(advisors)
+
+    return render_template("advisors.j2", advisors=advisors)
 
 
 @app.route('/instructors', methods=['POST', 'GET'])
