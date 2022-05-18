@@ -35,7 +35,7 @@ pip3 install -r requirements.txt
 if __name__ == "__main__":
     app.run(port=XXXX, debug=True)
 ```
-- Run gunicorn
+- Run gunicorn (replacing XXXX with port number you chose)
 ```bash
 gunicorn -b 0.0.0.0:XXXX app:app
 ```
