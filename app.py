@@ -84,42 +84,71 @@ def students():
     return render_template("students.j2", students=students, majors=majors, advisors=advisors)
 
 
-@app.route('/majors')
+@app.route('/majors', methods=['POST', 'GET'])
 def majors():
-    return render_template("majors.j2")
+
+    db_connection.ping(True)  # ping to avoid timeout
+
+    # Insert major
+    if request.method == "POST":
+        majorid = request.form["majorid"]
+        title = request.form["title"]
+
+        query = '''
+        INSERT INTO Majors 
+        (major_id, title) 
+        VALUES 
+        (%s, %s)
+        '''
+        cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(
+            majorid, title))
+
+        return redirect('/majors')
+
+    # Populate Majors table
+    query = '''
+    SELECT major_id AS "Major ID", title AS Title FROM Majors
+    '''
+
+    cursor = db.execute_query(db_connection=db_connection, query=query)
+    majors = cursor.fetchall()
+
+    print(majors)
+
+    return render_template("majors.j2", majors=majors)
 
 
-@app.route('/advisors')
+@app.route('/advisors', methods=['POST', 'GET'])
 def advisors():
     return render_template("advisors.j2")
 
 
-@app.route('/instructors')
+@app.route('/instructors', methods=['POST', 'GET'])
 def instructors():
     return render_template("instructors.j2")
 
 
-@app.route('/courses')
+@app.route('/courses', methods=['POST', 'GET'])
 def courses():
     return render_template("courses.j2")
 
 
-@app.route('/courses_instructors')
+@app.route('/courses_instructors', methods=['POST', 'GET'])
 def courses_instructors():
     return render_template("courses_instructors.j2")
 
 
-@app.route('/registrations')
+@app.route('/registrations', methods=['POST', 'GET'])
 def registrations():
     return render_template("registrations.j2")
 
 
-@app.route('/semesters')
+@app.route('/semesters', methods=['POST', 'GET'])
 def semesters():
     return render_template("semesters.j2")
 
 
-@app.route('/grades')
+@app.route('/grades', methods=['POST', 'GET'])
 def grades():
     return render_template("grades.j2")
 

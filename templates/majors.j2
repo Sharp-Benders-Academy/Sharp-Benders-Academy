@@ -27,34 +27,27 @@
 <table class="table table-striped table-hover">
     <thead>
         <tr>
-            <th scope="col">Major ID</th>
-            <th scope="col">Title</th>
+            {% for key in majors[0].keys() %}
+
+            <th scope="col"> {{ key }} </th>
+
+            {% endfor %}
         </tr>
     </thead>
     <tbody>
+        {% for major in majors %}
         <tr>
-            <th scope="row">WBND</th>
-            <td>Waterbending</td>
+            <th scope="row">{{major['Major ID']}}</th>
+            <td>{{major['Title']}}</td>
         </tr>
-        <tr>
-            <th scope="row">FBND</th>
-            <td>Firebending</td>
-        </tr>
-        <tr>
-            <th scope="row">EBND</th>
-            <td>Earthbending</td>
-        </tr>
-        <tr>
-            <th scope="row">ABND</th>
-            <td>Airbending</td>
-        </tr>
+        {% endfor %}
     </tbody>
 </table>
 
 <hr>
 
 <div class="container-fluid">
-    <form class="form-horizontal">
+    <form action="/majors" method="post" class="form-horizontal">
         <fieldset>
 
             <!-- Form Name -->
@@ -74,7 +67,7 @@
             <div class="form-group py-2">
                 <label class="col-md-4 control-label" for="majortitle">Major Title</label>
                 <div class="col-md-4">
-                    <input id="majortitle" name="majortitle" type="text" placeholder="" class="form-control input-md"
+                    <input id="majortitle" name="title" type="text" placeholder="" class="form-control input-md"
                         required="">
 
                 </div>
