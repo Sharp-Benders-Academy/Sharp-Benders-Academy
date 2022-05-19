@@ -132,6 +132,10 @@ DELETE FROM Registrations
 WHERE student_id = :student_id_selected_from_registrations_list 
 AND course_id = :course_id_selected_from_registrations_list
 
+-- Delete a Registration
+DELETE FROM Registrations
+WHERE reg_id = :reg_id_input
+
 
 
 ---------------------------------------------------------------------------

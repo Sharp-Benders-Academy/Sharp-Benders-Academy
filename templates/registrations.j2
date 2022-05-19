@@ -46,7 +46,7 @@
             <td>{{reg[key]}}
                 {% endfor %}
             <td><img src="{{ url_for('static', filename='images/pencil.svg')}}" alt="Edit" width="20" height="20"></td>
-            <td><img src="{{ url_for('static', filename='images/trash.svg')}}" alt="Edit" width="20" height="20"></td>
+            <td><a href="delete_reg/{{regID}}"><img src="{{ url_for('static', filename='images/trash.svg')}}" alt="Delete" width="20" height="20"></a></td>
         </tr>
         {% endfor %}
     </tbody>

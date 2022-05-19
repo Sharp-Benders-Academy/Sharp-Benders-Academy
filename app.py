@@ -9,6 +9,8 @@ import database.db_connector as db
 db_connection = db.connect_to_database()
 app = Flask(__name__)
 
+mysql = MySQL(app)
+
 # Routes
 
 
@@ -245,6 +247,15 @@ def registrations():
     return render_template("registrations.j2", registrations=registrations, students=students, courses=courses, semesters=semesters)
 
 
+@app.route('/delete_reg/<int:regID>')
+def delete_reg(regID):
+    # mySQL query to delete the registration with our passed id
+    query = "DELETE FROM Registrations WHERE reg_id = `%s`;"
+    # cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(regID,))
+    return redirect("/registrations")
+    
+
+
 @app.route('/semesters', methods=['POST', 'GET'])
 def semesters():
     return render_template("semesters.j2")
@@ -253,6 +264,9 @@ def semesters():
 @app.route('/grades', methods=['POST', 'GET'])
 def grades():
     return render_template("grades.j2")
+
+
+
 
 
 # Listener
