@@ -37,5 +37,5 @@ if __name__ == "__main__":
 ```
 - Run gunicorn (replacing XXXX with port number you chose)
 ```bash
-gunicorn -b 0.0.0.0:XXXX app:app
+gunicorn -b 0.0.0.0:XXXX -D app:app
 ```
