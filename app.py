@@ -22,7 +22,7 @@ def students():
 
     db_connection.ping(True)  # ping to avoid timeout
 
-    # Insert student
+    # Insert Student
     if request.method == 'POST':
         fname = request.form["fname"]
         lname = request.form["lname"]
@@ -89,7 +89,7 @@ def majors():
 
     db_connection.ping(True)  # ping to avoid timeout
 
-    # Insert major
+    # Insert Major
     if request.method == "POST":
         majorid = request.form["majorid"]
         title = request.form["title"]
@@ -109,7 +109,6 @@ def majors():
     query = '''
     SELECT major_id AS "Major ID", title AS Title FROM Majors
     '''
-
     cursor = db.execute_query(db_connection=db_connection, query=query)
     majors = cursor.fetchall()
 
@@ -124,6 +123,7 @@ def advisors():
 
     db_connection.ping(True)  # ping to avoid timeout
 
+    # Insert Advisor
     if request.method == "POST":
         fname = request.form["fname"]
         lname = request.form["lname"]
@@ -143,7 +143,6 @@ def advisors():
         VALUES 
         (%s, %s, %s, %s, %s, %s, %s, %s, %s)
         '''
-
         cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(
             fname, lname, email, phone, aline1, aline2, city, state, postal))
 
@@ -156,7 +155,6 @@ def advisors():
     city AS City, state AS State, postal_code AS "Postal Code"
     FROM Advisors
     '''
-
     cursor = db.execute_query(db_connection=db_connection, query=query)
     advisors = cursor.fetchall()
 
@@ -183,7 +181,68 @@ def courses_instructors():
 
 @app.route('/registrations', methods=['POST', 'GET'])
 def registrations():
-    return render_template("registrations.j2")
+
+    db_connection.ping(True)  # ping to avoid timeout
+
+    # Insert Registration
+    if request.method == "POST":
+        studentid = request.form["studentid"]
+        courseid = request.form["courseid"]
+        semesterid = request.form["semesterid"]
+        year = request.form["year"]
+
+        query = """
+        INSERT INTO Registrations 
+        (student_id, course_id, year, semester_id) 
+        VALUES 
+        (%s, %s, %s, %s)
+        """
+        cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(
+            studentid, courseid, year, semesterid))
+
+        return redirect("/registrations")
+
+    # Populate Registrations table
+    query = '''
+    SELECT reg_id AS "Reg ID", CONCAT(Students.first_name, ' ', Students.last_name) AS Student, 
+    Courses.title AS Course, Semesters.title AS Semester, year AS Year
+    FROM Registrations 
+    INNER JOIN Students ON Registrations.student_id = Students.student_id
+    INNER JOIN Courses ON Registrations.course_id = Courses.course_id
+    INNER JOIN Semesters ON Registrations.semester_id = Semesters.semester_id
+    ORDER BY reg_id;
+    '''
+    cursor = db.execute_query(db_connection=db_connection, query=query)
+    registrations = cursor.fetchall()
+
+    # Populate Student dropdown
+    query2 = """
+    SELECT student_id, CONCAT(first_name, ' ', last_name) AS Student FROM Students
+    """
+    cursor = db.execute_query(db_connection=db_connection, query=query2)
+    students = cursor.fetchall()
+
+    # Populate Courses dropdown
+    query3 = """
+    SELECT course_id, title AS Course FROM Courses
+    """
+    cursor = db.execute_query(db_connection=db_connection, query=query3)
+    courses = cursor.fetchall()
+
+    # Populate Semesters dropdown
+    query4 = """
+    SELECT semester_id, title AS Semester FROM Semesters
+    """
+    cursor = db.execute_query(db_connection=db_connection, query=query4)
+    semesters = cursor.fetchall()
+
+    # REMOVE
+    print(registrations)
+    print(students)
+    print(courses)
+    print(semesters)
+
+    return render_template("registrations.j2", registrations=registrations, students=students, courses=courses, semesters=semesters)
 
 
 @app.route('/semesters', methods=['POST', 'GET'])

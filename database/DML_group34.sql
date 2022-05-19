@@ -102,11 +102,12 @@ SELECT semester_id, title AS Semester FROM Semesters
 
 -- Select Registrations: get all registrations for List Registrations page
 SELECT reg_id AS "Reg ID", CONCAT(Students.first_name, ' ', Students.last_name) AS Student, 
-Courses.title AS Course, Semesters.title AS Semester, year AS Year
-FROM Registrations 
-INNER JOIN Students ON Registrations.student_id = Students.student_id
-INNER JOIN Courses ON Registrations.course_id = Courses.course_id
-INNER JOIN Semesters ON Registrations.semester_id = Semesters.semester_id
+    Courses.title AS Course, Semesters.title AS Semester, year AS Year
+    FROM Registrations 
+    INNER JOIN Students ON Registrations.student_id = Students.student_id
+    INNER JOIN Courses ON Registrations.course_id = Courses.course_id
+    INNER JOIN Semesters ON Registrations.semester_id = Semesters.semester_id
+    ORDER BY reg_id;
 
 -- Add new Registrations
 INSERT INTO Registrations 
