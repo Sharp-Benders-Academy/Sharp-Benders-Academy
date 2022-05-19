@@ -121,6 +121,15 @@ SELECT reg_id, student_id, course_id, year, semester_id
 FROM Registrations 
 WHERE reg_id = :reg_ID_selected_from_browse_registrations_page
 
+-- get a single registration's data for the Update Registration form (updated)
+SELECT CONCAT(Students.first_name, ' ', Students.last_name) AS Student, 
+    Courses.title AS Course, Semesters.title AS Semester, year AS Year
+    FROM Registrations 
+    INNER JOIN Students ON Registrations.student_id = Students.student_id
+    INNER JOIN Courses ON Registrations.course_id = Courses.course_id
+    INNER JOIN Semesters ON Registrations.semester_id = Semesters.semester_id
+    WHERE reg_id = :reg_ID_selected_from_browse_registrations_page;
+
 -- update a Registration data based on submission of the Update Registraton form 
 UPDATE Registrations 
 SET student_id = :student_id_from_dropdown_Input, course_id = :course_id_from_dropdown_Input, 

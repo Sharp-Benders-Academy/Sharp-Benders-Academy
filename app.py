@@ -253,8 +253,24 @@ def delete_reg(regID):
    
     # redirect back to registrations page
     return redirect("/registrations")
-    
 
+
+@app.route('/edit_reg/<int:regID>', methods=['POST', 'GET'])
+def edit_reg(regID):
+    if request.method == 'GET':
+        # mySQL query to grab the info of the registration with our passed regID
+        query = """
+        SELECT CONCAT(Students.first_name, ' ', Students.last_name) AS Student, 
+        Courses.title AS Course, Semesters.title AS Semester, year AS Year
+        FROM Registrations 
+        INNER JOIN Students ON Registrations.student_id = Students.student_id
+        INNER JOIN Courses ON Registrations.course_id = Courses.course_id
+        INNER JOIN Semesters ON Registrations.semester_id = Semesters.semester_id
+        WHERE reg_id = %s;
+        """ % (regID)
+        cursor = db.execute_query(db_connection=db_connection, query=query)
+        registrations = cursor.fetchall()
+        # To Be Completed
 
 @app.route('/semesters', methods=['POST', 'GET'])
 def semesters():
