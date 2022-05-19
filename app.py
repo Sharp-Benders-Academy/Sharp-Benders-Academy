@@ -255,6 +255,7 @@ def delete_reg(regID):
     return redirect("/registrations")
 
 
+# NOT IN WORKING CONDITION
 @app.route('/edit_reg/<int:regID>', methods=['POST', 'GET'])
 def edit_reg(regID):
     if request.method == 'GET':
@@ -270,7 +271,45 @@ def edit_reg(regID):
         """ % (regID)
         cursor = db.execute_query(db_connection=db_connection, query=query)
         data = cursor.fetchall()
-        # To Be Completed
+            
+        # Populate Student dropdown
+        query2 = """
+        SELECT student_id, CONCAT(first_name, ' ', last_name) AS Student FROM Students
+        """
+        cursor = db.execute_query(db_connection=db_connection, query=query2)
+        students = cursor.fetchall()
+
+        # Populate Courses dropdown
+        query3 = """
+        SELECT course_id, title AS Course FROM Courses
+        """
+        cursor = db.execute_query(db_connection=db_connection, query=query3)
+        courses = cursor.fetchall()
+
+        # Populate Semesters dropdown
+        query4 = """
+        SELECT semester_id, title AS Semester FROM Semesters
+        """
+        cursor = db.execute_query(db_connection=db_connection, query=query4)
+        semesters = cursor.fetchall()
+        
+        # render edit_registrations page passing our query data, students, courses and semesters to the edit_registrations template
+        return render_template('edit_registrations.j2', data=data, students=students, courses=courses, semesters=semesters)
+    
+    if request.method == "POST":
+        # fire off if user clicks the 'Edit Registration' button (NOT IMPLEMENTED)
+        if request.form.get("Edit_Registration"):
+            # grab user form inputs
+            reg_id = request.form["reg_id"]
+            studentid = request.form["studentid"]
+            courseid = request.form["courseid"]
+            semesterid = request.form["semesterid"]
+            year = request.form["year"]
+
+    # To Be Completed:
+        # Need to populate selected student in Edit Registration page
+        # New selections are saved to the database
+        # Save button needs to save updates and user goes back to /registrations (currently creates new user)
 
 @app.route('/semesters', methods=['POST', 'GET'])
 def semesters():

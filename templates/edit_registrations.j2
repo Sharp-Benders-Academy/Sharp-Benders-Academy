@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Registration{% endblock %}
+
+{% block navlinks %}
+<div class="navbar-nav nav-tabs">
+    <a class="nav-link mx-3" aria-current="page" href="/">Home</a>
+    <a class="nav-link" aria-current="page" href="students">Students</a>
+    <a class="nav-link" href="majors">Majors</a>
+    <a class="nav-link" href="advisors">Advisors</a>
+    <a class="nav-link" href="instructors">Instructors</a>
+    <a class="nav-link" href="courses">Courses</a>
+    <a class="nav-link" href="courses_instructors">Courses_Instructors</a>
+    <a class="nav-link active" href="registrations">Registrations</a>
+    <a class="nav-link" href="semesters">Semesters</a>
+    <a class="nav-link" href="grades">Grades</a>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid text-center">
+    <h1 class="display-5">Edit Registration</h1>
+    <p class="text-muted">Edit the student's registration</p>
+</div>
+
+<hr>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <form action="/registrations" method="post" class="form-horizontal">
+                <fieldset>
+
+                    <!-- Edit_Registration -->
+                    <legend>Edit Registration</legend>
+
+                    <!-- Select Basic -->
+                    <div class="form-group py-2">
+                        <label class="col-md-4 control-label" for="studentid">Student Name</label>
+                        <div class="col-md-4">
+                            <select id="studentid" name="studentid" class="form-control">
+                                {% for student in students %}
+                                <option value="{{student.student_id}}">{{student.Student}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Select Basic -->
+                    <div class="form-group py-2">
+                        <label class="col-md-4 control-label" for="courseid">Course Name</label>
+                        <div class="col-md-4">
+                            <select id="courseid" name="courseid" class="form-control">
+                                {% for course in courses %}
+                                <option value="{{course.course_id}}">{{course.Course}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Select Basic -->
+                    <div class="form-group py-2">
+                        <label class="col-md-4 control-label" for="semesterid">Semester</label>
+                        <div class="col-md-2">
+                            <select id="semesterid" name="semesterid" class="form-control">
+                                {% for semester in semesters %}
+                                <option value="{{semester.semester_id}}">{{semester.Semester}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group pt-2">
+                        <label class="col-md-4 control-label" for="year">Year</label>
+                        <div class="col-md-2">
+                            <input id="year" name="year" type="number" value="2022" class="form-control input-md"
+                                required="">
+
+                        </div>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="submit"></label>
+                        <div class="col-md-4">
+                            <button id="submit" name="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+
+</div>
+
+{% endblock %}
