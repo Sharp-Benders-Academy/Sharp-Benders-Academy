@@ -1,4 +1,7 @@
-# Code used from CS340 github
+# Citation for the following functions: connect_to_database, execute_query
+# Date:May 2022
+# Copied from: Flask-Starter-App
+# Source URL: https://github.com/osu-cs340-ecampus/flask-starter-app/blob/master/database/db_connector.py
 
 import MySQLdb
 import os
