@@ -134,7 +134,7 @@ SELECT CONCAT(Students.first_name, ' ', Students.last_name) AS Student,
 UPDATE Registrations 
 SET student_id = :student_id_from_dropdown_Input, course_id = :course_id_from_dropdown_Input, 
 year = :yearInput, semester_id = :semester_id_from_dropdown_Input
-WHERE id= :reg_id_from_the_update_form
+WHERE reg_id= :reg_id_from_the_update_form
 
 -- Delete a Registration (M-to-M relationship deletion)
 DELETE FROM Registrations 

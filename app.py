@@ -75,11 +75,6 @@ def students():
     cursor = db.execute_query(db_connection=db_connection, query=query3)
     advisors = cursor.fetchall()
 
-    # REMOVE
-    print(students)
-    print(majors)
-    print(advisors)
-
     # Sends the results back to the web browser.
     return render_template("students.j2", students=students, majors=majors, advisors=advisors)
 
@@ -111,9 +106,6 @@ def majors():
     '''
     cursor = db.execute_query(db_connection=db_connection, query=query)
     majors = cursor.fetchall()
-
-    # REMOVE
-    print(majors)
 
     return render_template("majors.j2", majors=majors)
 
@@ -157,9 +149,6 @@ def advisors():
     '''
     cursor = db.execute_query(db_connection=db_connection, query=query)
     advisors = cursor.fetchall()
-
-    # REMOVE
-    print(advisors)
 
     return render_template("advisors.j2", advisors=advisors)
 
@@ -236,12 +225,6 @@ def registrations():
     cursor = db.execute_query(db_connection=db_connection, query=query4)
     semesters = cursor.fetchall()
 
-    # REMOVE
-    print(registrations)
-    print(students)
-    print(courses)
-    print(semesters)
-
     return render_template("registrations.j2", registrations=registrations, students=students, courses=courses, semesters=semesters)
 
 
@@ -249,13 +232,13 @@ def registrations():
 def delete_reg(regID):
     # mySQL query to delete the registration with our passed id
     query = "DELETE FROM Registrations WHERE reg_id = %s;"
-    cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(regID,))
-   
+    cursor = db.execute_query(
+        db_connection=db_connection, query=query, query_params=(regID,))
+
     # redirect back to registrations page
     return redirect("/registrations")
 
 
-# NOT IN WORKING CONDITION
 @app.route('/edit_reg/<int:regID>', methods=['POST', 'GET'])
 def edit_reg(regID):
     if request.method == 'GET':
@@ -271,7 +254,7 @@ def edit_reg(regID):
         """ % (regID)
         cursor = db.execute_query(db_connection=db_connection, query=query)
         data = cursor.fetchall()
-            
+
         # Populate Student dropdown
         query2 = """
         SELECT student_id, CONCAT(first_name, ' ', last_name) AS Student FROM Students
@@ -292,24 +275,32 @@ def edit_reg(regID):
         """
         cursor = db.execute_query(db_connection=db_connection, query=query4)
         semesters = cursor.fetchall()
-        
-        # render edit_registrations page passing our query data, students, courses and semesters to the edit_registrations template
-        return render_template('edit_registrations.j2', data=data, students=students, courses=courses, semesters=semesters)
-    
-    if request.method == "POST":
-        # fire off if user clicks the 'Edit Registration' button (NOT IMPLEMENTED)
-        if request.form.get("Edit_Registration"):
-            # grab user form inputs
-            reg_id = request.form["reg_id"]
-            studentid = request.form["studentid"]
-            courseid = request.form["courseid"]
-            semesterid = request.form["semesterid"]
-            year = request.form["year"]
 
-    # To Be Completed:
-        # Need to populate selected student in Edit Registration page
-        # New selections are saved to the database
-        # Save button needs to save updates and user goes back to /registrations (currently creates new user)
+        # render edit_registrations page passing our query data, students, courses and semesters to the edit_registrations template
+        return render_template('edit_registrations.j2', data=data, students=students, courses=courses, semesters=semesters, regID=regID)
+
+    if request.method == "POST":
+        # fire off if user clicks the 'Edit Registration' button
+
+        # if request.form.get("Edit_Registration"): <- wouldn't work with this line for some reason
+
+        # grab user form inputs
+        studentid = request.form["studentid"]
+        courseid = request.form["courseid"]
+        semesterid = request.form["semesterid"]
+        year = request.form["year"]
+
+        query = '''
+        UPDATE Registrations 
+        SET student_id = %s, course_id = %s, 
+        year = %s, semester_id = %s
+        WHERE reg_id= %s
+        '''
+        cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(
+            studentid, courseid, year, semesterid, regID))
+
+        return redirect("/registrations")
+
 
 @app.route('/semesters', methods=['POST', 'GET'])
 def semesters():
@@ -321,12 +312,7 @@ def grades():
     return render_template("grades.j2")
 
 
-
-
-
 # Listener
-
-
 if __name__ == "__main__":
 
     app.run(port=7862, debug=True)
