@@ -9,8 +9,6 @@ import database.db_connector as db
 db_connection = db.connect_to_database()
 app = Flask(__name__)
 
-mysql = MySQL(app)
-
 # Routes
 
 
@@ -250,8 +248,10 @@ def registrations():
 @app.route('/delete_reg/<int:regID>')
 def delete_reg(regID):
     # mySQL query to delete the registration with our passed id
-    query = "DELETE FROM Registrations WHERE reg_id = `%s`;"
-    # cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(regID,))
+    query = "DELETE FROM Registrations WHERE reg_id = %s;"
+    cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(regID,))
+   
+    # redirect back to registrations page
     return redirect("/registrations")
     
 
