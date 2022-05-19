@@ -269,7 +269,7 @@ def edit_reg(regID):
         WHERE reg_id = %s;
         """ % (regID)
         cursor = db.execute_query(db_connection=db_connection, query=query)
-        registrations = cursor.fetchall()
+        data = cursor.fetchall()
         # To Be Completed
 
 @app.route('/semesters', methods=['POST', 'GET'])
