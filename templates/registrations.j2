@@ -71,6 +71,7 @@
                         <label class="col-md-4 control-label" for="studentid">Student Name</label>
                         <div class="col-md-4">
                             <select id="studentid" name="studentid" class="form-control">
+                                <option value="" disabled selected hidden>Please Choose...</option>
                                 {% for student in students %}
                                 <option value="{{student.student_id}}">{{student.Student}}</option>
                                 {% endfor %}
