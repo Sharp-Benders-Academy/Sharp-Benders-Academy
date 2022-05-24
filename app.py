@@ -133,7 +133,7 @@ def advisors():
         phone_number, address_line1, address_line2, 
         city, state, postal_code) 
         VALUES 
-        (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+        (%s, %s, %s, %s, %s,  NULLIF(%s, ''), %s, %s, %s)
         '''
         cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(
             fname, lname, email, phone, aline1, aline2, city, state, postal))
