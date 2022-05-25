@@ -38,12 +38,13 @@
     </thead>
     <tbody>
         {% for course in courses %}
-        <tr>
+        {% set courseID = course['Course ID'] %}
+        <tr id="{{courseID}}">
             {% for key in course.keys() %}
 
             <td>{{course[key]}}
                 {% endfor %}
-            <td><a href="">
+            <td><a href="delete_course/{{courseID}}">
                     <img src="{{ url_for('static', filename='images/trash.svg')}}" alt="Delete" width="20" height="20">
                 </a></td>
         </tr>
