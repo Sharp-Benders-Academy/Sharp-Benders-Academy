@@ -466,7 +466,36 @@ def edit_reg(regID):
 
 @app.route('/semesters', methods=['POST', 'GET'])
 def semesters():
-    return render_template("semesters.j2")
+
+    db_connection.ping(True)  # ping to avoid timeout
+
+    # Insert Semester
+    if request.method == "POST":
+        semesterid = request.form["semesterid"]
+        semestertitle = request.form["semestertitle"]
+
+        query='''
+        INSERT INTO Semesters 
+        (semester_id, title) 
+        VALUES 
+        (%s, %s)
+        '''
+
+        cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(
+            semesterid, semestertitle))
+        
+        return redirect("/semesters")
+
+    query = '''
+    SELECT semester_id AS "Semester ID", title AS Title
+    FROM Semesters
+    '''
+    cursor = db.execute_query(db_connection=db_connection, query=query)
+    semesters = cursor.fetchall()
+
+    print(semesters)
+
+    return render_template("semesters.j2", semesters=semesters)
 
 
 @app.route('/grades', methods=['POST', 'GET'])

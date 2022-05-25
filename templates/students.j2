@@ -21,31 +21,34 @@
 
 <div class="container-fluid text-center">
     <h1 class="display-5">Students</h1>
-    <p class="text-muted">View or add students</p>
+    <p class="text-muted">View or <a href="#addStudent">add students</a></p>
 </div>
 
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            {% for key in students[0].keys() %}
+<div style="display: block; max-height: 450px; overflow-y: auto; width:100%">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                {% for key in students[0].keys() %}
 
-            <th scope="col"> {{ key }} </th>
+                <th scope="col"> {{ key }} </th>
 
-            {% endfor %}
-        </tr>
-    </thead>
-    <tbody>
-        {% for student in students %}
-        <tr>
-            {% for key in student.keys() %}
-
-            <td>{{student[key]}}
                 {% endfor %}
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                {% for key in student.keys() %}
 
+                <td>{{student[key]}}
+                    {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<span id="addStudent" style="margin: 50px;"></span>
 <hr>
 
 <!-- Insert student -->
