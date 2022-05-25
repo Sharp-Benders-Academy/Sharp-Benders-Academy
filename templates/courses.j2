@@ -52,15 +52,10 @@
 </table>
 
 
-
-
-
-
-
 <hr>
 
 <div class="container-fluid">
-    <form class="form-horizontal">
+    <form action="/courses" method="post" class="form-horizontal">
         <fieldset>
 
             <!-- Form Name -->
@@ -68,9 +63,9 @@
 
             <!-- Text input-->
             <div class="form-group py-2">
-                <label class="col-md-4 control-label" for="courseid">Course ID</label>
+                <label class="col-md-4 control-label" for="course_id">Course ID</label>
                 <div class="col-md-2">
-                    <input id="courseid" name="courseid" type="number" maxlength="4" placeholder=""
+                    <input id="course_id" name="course_id" type="number" maxlength="4" placeholder=""
                         class="form-control input-md" required="">
                     <div id="coursehelp" class="form-text">Enter a unique 4 digit number</div>
 
@@ -79,9 +74,9 @@
 
             <!-- Text input-->
             <div class="form-group py-2">
-                <label class="col-md-4 control-label" for="coursetitle">Course Title</label>
+                <label class="col-md-4 control-label" for="title">Course Title</label>
                 <div class="col-md-4">
-                    <input id="coursetitle" name="coursetitle" type="text" placeholder="" class="form-control input-md"
+                    <input id="title" name="title" type="text" placeholder="Enter Course Title" class="form-control input-md"
                         required="">
 
                 </div>
@@ -89,9 +84,9 @@
 
             <!-- Text input-->
             <div class="form-group py-2">
-                <label class="col-md-4 control-label" for="starttime">Start Time</label>
+                <label class="col-md-4 control-label" for="start_time">Start Time</label>
                 <div class="col-md-2">
-                    <input id="starttime" name="starttime" type="text" placeholder="14:00"
+                    <input id="start_time" name="start_time" type="text" placeholder="14:00"
                         class="form-control input-md">
 
                 </div>
@@ -100,18 +95,18 @@
 
             <!-- Text input-->
             <div class="form-group py-2">
-                <label class="col-md-4 control-label" for="endtime">End Time</label>
+                <label class="col-md-4 control-label" for="end_time">End Time</label>
                 <div class="col-md-2">
-                    <input id="endtime" name="endtime" type="text" placeholder="16:00" class="form-control input-md">
+                    <input id="end_time" name="end_time" type="text" placeholder="16:00" class="form-control input-md">
 
                 </div>
             </div>
 
             <!-- Text input-->
             <div class="form-group py-2">
-                <label class="col-md-4 control-label" for="numofcredits">Num of credits</label>
+                <label class="col-md-4 control-label" for="num_of_credits">Number of credits</label>
                 <div class="col-md-1">
-                    <input id="numofcredits" name="numofcredits" type="number" placeholder=""
+                    <input id="num_of_credits" name="num_of_credits" type="number" placeholder=""
                         class="form-control input-md" required="">
 
                 </div>
@@ -119,10 +114,10 @@
 
             <!-- Multiple Checkboxes (inline) -->
             <div class="form-group py-2">
-                <label class="col-md-4 control-label" for="isremote">Is remote?</label>
+                <label class="col-md-4 control-label" for="is_remote">Is remote?</label>
                 <div class="col-md-4">
-                    <label class="checkbox-inline" for="isremote-0">
-                        <input type="checkbox" name="isremote" id="isremote-0" value="1">
+                    <label class="checkbox-inline" for="is_remote">
+                        <input type="checkbox" name="is_remote" id="is_remote" value="1">
                         Yes
                     </label>
                 </div>
@@ -141,12 +136,12 @@
 
             <!-- Select Multiple -->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="instructor">Select Instructor(s)</label>
+                <label class="col-md-4 control-label" for="instructor_ids">Select Instructor(s)</label>
                 <div class="col-md-4">
-                    <select id="instructor" name="instructor" class="form-control" multiple="multiple">
-                        <option value="1">Katara Williams</option>
-                        <option value="2">Sokka Brown</option>
-                        <option value="3">Azula Stone</option>
+                    <select id="instructor_ids" name="instructor_ids" class="form-control" multiple="multiple" required>
+                        {% for instructor in instructors %}
+                        <option value="{{instructor.instructor_id}}">{{instructor.Instructor}}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <div id="instructorselecthelp" class="form-text">Hold Ctrl/CMD to select multiple instructors</div>

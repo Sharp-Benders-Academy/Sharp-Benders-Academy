@@ -211,15 +211,16 @@ def courses():
         end_time = request.form["end_time"]
         is_remote = request.form["is_remote"]
         capacity = request.form["capacity"]
+        instructor_ids = request.form.getlist('instructor_ids')
 
         query = """
         INSERT INTO Courses 
-        (course_id, title, start_time, end_time, num_of_credits, end_time, is_remote, capacity) 
+        (course_id, title, start_time, end_time, num_of_credits, is_remote, capacity) 
         VALUES 
         (%s, %s, %s, %s, %s, %s, %s)
         """
         cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(
-            course_id, title, start_time, end_time, num_of_credits, end_time, is_remote, capacity))
+            course_id, title, start_time, end_time, num_of_credits, is_remote, capacity))
 
         # Insert into Courses_Instructors Table
         query2 = """
@@ -228,8 +229,9 @@ def courses():
         VALUES 
         (%s, %s)
         """
-        cursor = db.execute_query(db_connection=db_connection, query=query2, query_params=(
-            instructor_id, course_id))
+        for instructor_id in instructor_ids:
+            cursor = db.execute_query(db_connection=db_connection, query=query2, query_params=(
+                instructor_id, course_id))
 
         return redirect("/courses")
 
