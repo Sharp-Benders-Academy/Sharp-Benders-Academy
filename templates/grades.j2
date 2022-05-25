@@ -24,6 +24,40 @@
     <p class="text-muted">View, add, or search for student grades</p>
 </div>
 
+<div class="container-fluid">
+    <form class="form-horizontal">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>Search/Filter</legend>
+
+            <!-- Select Basic -->
+            <div class="form-group pt-2">
+                <label class="col-md-4 control-label" for="studentsearch">Student Name</label>
+                <div class="col-md-4">
+                    <select id="studentsearch" name="studentsearch" class="form-control" required>
+                        <option value="" disabled selected hidden>Please Choose...</option>
+                        <option value="1">Korra Smith</option>
+                        <option value="2">Aang Cook</option>
+                        <option value="3">Roku Hunter</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group py-2">
+                <label class="col-md-4 control-label" for="search">Find Grades</label>
+                <div class="col-md-4">
+                    <button id="search" name="search" class="btn btn-info">Search</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+
+<hr>
+
 <table class="table table-striped table-hover">
     <thead>
         <tr>
@@ -69,7 +103,8 @@
             <div class="form-group py-2">
                 <label class="col-md-4 control-label" for="studentid">Student Name</label>
                 <div class="col-md-4">
-                    <select id="studentid" name="studentid" class="form-control">
+                    <select id="studentid" name="studentid" class="form-control" required>
+                        <option value="" disabled selected hidden>Please Choose...</option>
                         <option value="1">Korra Smith</option>
                         <option value="2">Aang Cook</option>
                         <option value="3">Roku Hunter</option>
@@ -81,7 +116,8 @@
             <div class="form-group py-2">
                 <label class="col-md-4 control-label" for="courseid">Course Name</label>
                 <div class="col-md-4">
-                    <select id="courseid" name="courseid" class="form-control">
+                    <select id="courseid" name="courseid" class="form-control" required>
+                        <option value="" disabled selected hidden>Please Choose...</option>
                         <option value="3101">Introduction to Bending</option>
                         <option value="4205">Bending Fundamentals</option>
                         <option value="5401">Manipulation Water - Water Tech</option>
@@ -118,37 +154,7 @@
 
     <hr>
 
-    <form class="form-horizontal">
-        <fieldset>
-
-            <!-- Form Name -->
-            <legend>Search/Filter</legend>
-
-            <!-- Select Basic -->
-            <div class="form-group pt-2">
-                <label class="col-md-4 control-label" for="studentsearch">Student Name</label>
-                <div class="col-md-4">
-                    <select id="studentsearch" name="studentsearch" class="form-control">
-                        <option value="1">Korra Smith</option>
-                        <option value="2">Aang Cook</option>
-                        <option value="3">Roku Hunter</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- Button -->
-            <div class="form-group py-2">
-                <label class="col-md-4 control-label" for="search">Find Grades</label>
-                <div class="col-md-4">
-                    <button id="search" name="search" class="btn btn-info">Search</button>
-                </div>
-            </div>
-
-        </fieldset>
-    </form>
-
-
-
 
 </div>
+
 {% endblock %}
