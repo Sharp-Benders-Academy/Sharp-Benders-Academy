@@ -27,38 +27,22 @@
 <table class="table table-striped table-hover">
     <thead>
         <tr>
-            <th scope="col">Course_Instructor ID</th>
-            <th scope="col">Instructor</th>
-            <th scope="col">Course</th>
+            {% for key in courses_instructors[0].keys() %}
+
+            <th scope="col"> {{ key }} </th>
+
+            {% endfor %}
         </tr>
     </thead>
     <tbody>
+        {% for course_instructor in courses_instructors %}
         <tr>
-            <th scope="row">1</th>
-            <td>Katara Williams</td>
-            <td>Manipulating Water - Waterbending Techniques</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Katara Williams</td>
-            <td>Introduction to Bending</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Sokka Brown</td>
-            <td>Bending Fundamentals</td>
-        </tr>
-        <tr>
-            <th scope="row">4</th>
-            <td>Sokka Brown</td>
-            <td>Introduction to Bending</td>
-        </tr>
-        <tr>
-            <th scope="row">5</th>
-            <td>Azula Stone</td>
-            <td>Introduction to Bending</td>
-        </tr>
+            {% for key in course_instructor.keys() %}
 
+            <td>{{course_instructor[key]}}
+                {% endfor %}
+        </tr>
+        {% endfor %}
     </tbody>
 </table>
 
