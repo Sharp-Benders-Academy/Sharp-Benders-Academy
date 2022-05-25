@@ -49,7 +49,7 @@
 <hr>
 
 <div class="container-fluid">
-    <form class="form-horizontal">
+    <form action="/courses_instructors" method="post" class="form-horizontal">
         <fieldset>
 
             <!-- Form Name -->
@@ -57,24 +57,26 @@
 
             <!-- Select Basic -->
             <div class="form-group py-2">
-                <label class="col-md-4 control-label" for="courseid">Select Course</label>
+                <label class="col-md-4 control-label" for="course_id">Select Course</label>
                 <div class="col-md-4">
-                    <select id="courseid" name="courseid" class="form-control">
-                        <option value="3101">Introduction to Bending</option>
-                        <option value="4205">Bending Fundamentals</option>
-                        <option value="5401">Manipulation Water - Water Tech</option>
+                    <select id="course_id" name="course_id" class="form-control" required>
+                        <option value="" disabled selected hidden>Please Choose...</option>
+                        {% for course in courses %}
+                        <option value="{{course.course_id}}">{{course.Course}}</option>
+                        {% endfor %}
                     </select>
                 </div>
             </div>
 
             <!-- Select Basic -->
             <div class="form-group pt-2">
-                <label class="col-md-4 control-label" for="instructorid">Select Instructor</label>
+                <label class="col-md-4 control-label" for="instructor_id">Select Instructor</label>
                 <div class="col-md-4">
-                    <select id="instructorid" name="instructorid" class="form-control">
-                        <option value="1">Katara Williams</option>
-                        <option value="2">Sokka Brown</option>
-                        <option value="3">Azula Stone</option>
+                    <select id="instructor_id" name="instructor_id" class="form-control" required>
+                        <option value="" disabled selected hidden>Please Choose...</option>
+                        {% for instructor in instructors %}
+                        <option value="{{instructor.instructor_id}}">{{instructor.Instructor}}</option>
+                        {% endfor %}
                     </select>
                 </div>
             </div>
