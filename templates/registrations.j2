@@ -70,7 +70,7 @@
                     <div class="form-group py-2">
                         <label class="col-md-4 control-label" for="studentid">Student Name</label>
                         <div class="col-md-4">
-                            <select id="studentid" name="studentid" class="form-control" required>
+                            <select id="studentid" name="studentid" class="form-control form-select" required>
                                 <option value="" disabled selected hidden>Please Choose...</option>
                                 {% for student in students %}
                                 <option value="{{student.student_id}}">{{student.Student}}</option>
@@ -83,7 +83,7 @@
                     <div class="form-group py-2">
                         <label class="col-md-4 control-label" for="courseid">Course Name</label>
                         <div class="col-md-4">
-                            <select id="courseid" name="courseid" class="form-control" required>
+                            <select id="courseid" name="courseid" class="form-control form-select" required>
                                 <option value="" disabled selected hidden>Please Choose...</option>
                                 {% for course in courses %}
                                 <option value="{{course.course_id}}">{{course.Course}}</option>
@@ -96,7 +96,7 @@
                     <div class="form-group py-2">
                         <label class="col-md-4 control-label" for="semesterid">Semester</label>
                         <div class="col-md-2">
-                            <select id="semesterid" name="semesterid" class="form-control" required>
+                            <select id="semesterid" name="semesterid" class="form-control form-select" required>
                                 <option value="" disabled selected hidden>Please Choose...</option>
                                 {% for semester in semesters %}
                                 <option value="{{semester.semester_id}}">{{semester.Semester}}</option>

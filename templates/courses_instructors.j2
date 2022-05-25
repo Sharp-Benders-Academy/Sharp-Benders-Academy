@@ -59,7 +59,7 @@
             <div class="form-group py-2">
                 <label class="col-md-4 control-label" for="course_id">Select Course</label>
                 <div class="col-md-4">
-                    <select id="course_id" name="course_id" class="form-control" required>
+                    <select id="course_id" name="course_id" class="form-control form-select" required>
                         <option value="" disabled selected hidden>Please Choose...</option>
                         {% for course in courses %}
                         <option value="{{course.course_id}}">{{course.Course}}</option>
@@ -72,7 +72,7 @@
             <div class="form-group pt-2">
                 <label class="col-md-4 control-label" for="instructor_id">Select Instructor</label>
                 <div class="col-md-4">
-                    <select id="instructor_id" name="instructor_id" class="form-control" required>
+                    <select id="instructor_id" name="instructor_id" class="form-control form-select" required>
                         <option value="" disabled selected hidden>Please Choose...</option>
                         {% for instructor in instructors %}
                         <option value="{{instructor.instructor_id}}">{{instructor.Instructor}}</option>

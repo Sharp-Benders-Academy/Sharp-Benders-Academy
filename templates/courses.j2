@@ -77,8 +77,8 @@
             <div class="form-group py-2">
                 <label class="col-md-4 control-label" for="title">Course Title</label>
                 <div class="col-md-4">
-                    <input id="title" name="title" type="text" placeholder="Enter Course Title" class="form-control input-md"
-                        required="">
+                    <input id="title" name="title" type="text" placeholder="Enter Course Title"
+                        class="form-control input-md" required="">
 
                 </div>
             </div>
@@ -139,7 +139,8 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="instructor_ids">Select Instructor(s)</label>
                 <div class="col-md-4">
-                    <select id="instructor_ids" name="instructor_ids" class="form-control" multiple="multiple" required>
+                    <select id="instructor_ids" name="instructor_ids" class="form-control form-select"
+                        multiple="multiple" required>
                         {% for instructor in instructors %}
                         <option value="{{instructor.instructor_id}}">{{instructor.Instructor}}</option>
                         {% endfor %}
