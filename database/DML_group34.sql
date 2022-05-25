@@ -221,7 +221,8 @@ VALUES
 DELETE FROM Courses 
 WHERE course_id = :course_id_selected_from_courses_list
 
-
+-- Populate Instructors menu
+SELECT instructor_id, CONCAT(first_name, ' ', last_name) AS Instructor FROM Instructors
 
 ---------------------------------------------------------------------------
 -- 7. Courses_Instructors
