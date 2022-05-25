@@ -234,7 +234,7 @@ SELECT course_id, title AS Course FROM Courses
 SELECT instructor_id, CONCAT(first_name, ' ', last_name) AS Instructor FROM Instructors
 
 -- Select Courses_Instructors: get all courses_instructors for List Courses_Instructors page
-SELECT course_instructor_id AS "Course_Instructor_ID", 
+SELECT course_instructor_id AS "Course_Instructor ID", 
 CONCAT(Instructors.first_name, " ", Instructors.last_name) AS Instructor,
 Courses.title AS Course 
 FROM Courses_Instructors 
