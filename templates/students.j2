@@ -144,7 +144,8 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="major">Select Major</label>
                 <div class="col-md-4">
-                    <select id="major" name="major" class="form-control">
+                    <select id="major" name="major" class="form-control" required>
+                        <option value="" disabled selected hidden>Please Choose...</option>
                         {% for major in majors %}
                         <option value="{{ major.major_id }}">{{ major.title }}</option>
                         {% endfor %}
@@ -157,7 +158,8 @@
             <div class="form-group py-2">
                 <label class="col-md-4 control-label" for="advisor">Select Advisor</label>
                 <div class="col-md-4">
-                    <select id="advisor" name="advisor" class="form-control">
+                    <select id="advisor" name="advisor" class="form-control" required>
+                        <option value="" disabled selected hidden>Please Choose...</option>
                         {% for advisor in advisors %}
                         <option value="{{ advisor.advisor_id }}">{{ advisor.Advisor }}</option>
                         {% endfor %}
