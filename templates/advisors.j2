@@ -30,27 +30,29 @@
 </div>
 <br />
 
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            {% for key in advisors[0].keys() %}
+<div style="display: block; max-height: 450px; overflow-y: auto; width:100%;">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr style="position:sticky; top: 0; background-color: rgb(220, 220, 220);">
+                {% for key in advisors[0].keys() %}
 
-            <th scope="col"> {{ key }} </th>
+                <th scope="col"> {{ key }} </th>
 
-            {% endfor %}
-        </tr>
-    </thead>
-    <tbody>
-        {% for advisor in advisors %}
-        <tr>
-            {% for key in advisor.keys() %}
-
-            <td>{{advisor[key]}}
                 {% endfor %}
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+            </tr>
+        </thead>
+        <tbody>
+            {% for advisor in advisors %}
+            <tr>
+                {% for key in advisor.keys() %}
+
+                <td>{{advisor[key]}}
+                    {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
 <p id="addAdvisor"> </p>
 <br />
