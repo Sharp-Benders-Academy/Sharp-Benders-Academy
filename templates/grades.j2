@@ -64,11 +64,6 @@
     </form>
 </div>
 
-<p id="addGrade"> </p>
-<br />
-<hr>
-<br />
-
 <table class="table table-striped table-hover">
     <thead>
         <tr>
@@ -91,7 +86,10 @@
     </tbody>
 </table>
 
+<p id="addGrade"> </p>
+<br />
 <hr>
+<br />
 
 <div class="container-fluid">
     <form class="form-horizontal">
@@ -104,11 +102,11 @@
             <div class="form-group py-2">
                 <label class="col-md-4 control-label" for="studentid">Student Name</label>
                 <div class="col-md-4">
-                    <select id="studentid" name="studentid" class="form-control form-select" required>
+                    <select id="student_id" name="student_id" class="form-control form-select" required>
                         <option value="" disabled selected hidden>Please Choose...</option>
-                        <option value="1">Korra Smith</option>
-                        <option value="2">Aang Cook</option>
-                        <option value="3">Roku Hunter</option>
+                        {% for student in students %}
+                        <option value="{{student.student_id}}">{{student.Student}}</option>
+                        {% endfor %}
                     </select>
                 </div>
             </div>
@@ -119,9 +117,9 @@
                 <div class="col-md-4">
                     <select id="courseid" name="courseid" class="form-control form-select" required>
                         <option value="" disabled selected hidden>Please Choose...</option>
-                        <option value="3101">Introduction to Bending</option>
-                        <option value="4205">Bending Fundamentals</option>
-                        <option value="5401">Manipulation Water - Water Tech</option>
+                        {% for course in courses %}
+                        <option value="{{course.course_id}}">{{course.Course}}</option>
+                        {% endfor %}
                     </select>
                 </div>
             </div>
@@ -131,11 +129,11 @@
                 <label class="col-md-4 control-label" for="passed_course">Grade</label>
                 <div class="col-md-4">
                     <label class="radio-inline mx-1" for="passed_course-0">
-                        <input type="radio" name="passed_course" id="passed_course-0" value="1" checked="checked">
+                        <input type="radio" name="passed_course" id="passed_course" value="1" checked="checked">
                         Pass
                     </label>
                     <label class="radio-inline mx-1" for="passed_course-1">
-                        <input type="radio" name="passed_course" id="passed_course-1" value="0">
+                        <input type="radio" name="passed_course" id="passed_course" value="0">
                         Fail
                     </label>
                 </div>
