@@ -490,7 +490,57 @@ def semesters():
 
 @app.route('/grades', methods=['POST', 'GET'])
 def grades():
-    return render_template("grades.j2")
+    
+    db_connection.ping(True)  # ping to avoid timeout
+
+    # Insert Grade into Grades
+    if request.method == "POST":
+        student_id = request.form["student_id"]
+        course_id = request.form["course_id"]
+        passed_course = request.form["passed_course"]
+
+        query = """
+        INSERT INTO Grades 
+        (passed_course, student_id, course_id) 
+        VALUES 
+        (%s, %s, %s, %s)
+        """
+        cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(
+            passed_course, student_id, course_id))
+
+        return redirect("/grades")
+
+    # Populate Grades table
+    query = '''
+    SELECT grade_id AS "Grade ID", 
+    CONCAT(Students.first_name, ' ', Students.last_name) AS Student, 
+    Courses.title AS Course,
+    CASE 
+        WHEN passed_course = 1 THEN 'YES'
+        WHEN passed_course = 0 THEN 'NO'
+    END AS "Passed Course"
+    FROM Grades 
+    INNER JOIN Students ON Grades.student_id = Students.student_id
+    INNER JOIN Courses ON Grades.course_id = Courses.course_id
+    '''
+    cursor = db.execute_query(db_connection=db_connection, query=query)
+    grades = cursor.fetchall()
+
+    # Populate Student dropdown
+    query2 = """
+    SELECT student_id, CONCAT(first_name, ' ', last_name) AS Student FROM Students
+    """
+    cursor = db.execute_query(db_connection=db_connection, query=query2)
+    students = cursor.fetchall()
+
+    # Populate Courses dropdown
+    query3 = """
+    SELECT course_id, title AS Course FROM Courses
+    """
+    cursor = db.execute_query(db_connection=db_connection, query=query3)
+    courses = cursor.fetchall()
+
+    return render_template("grades.j2", grades=grades, students=students, courses=courses)
 
 
 # Listener
