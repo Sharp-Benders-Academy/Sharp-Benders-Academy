@@ -24,6 +24,13 @@
     <p class="text-muted">View or add majors</p>
 </div>
 
+<!-- Add New Student Button -->
+<div class="container-fluid text-center">
+    <button class="btn btn-primary" onclick="window.location.href='#addMajor';">Add New Major</button>
+</div>
+<br />
+
+
 <table class="table table-striped table-hover">
     <thead>
         <tr>
@@ -45,6 +52,12 @@
 </table>
 
 <hr>
+
+<p id="addMajor"> </p>
+<br />
+<hr>
+<br />
+
 
 <div class="container-fluid">
     <form action="/majors" method="post" class="form-horizontal">
