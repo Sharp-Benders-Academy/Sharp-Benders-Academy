@@ -24,6 +24,11 @@
     <p class="text-muted">View or add courses</p>
 </div>
 
+<!-- Add New Course Button -->
+<div class="container-fluid text-center">
+    <button class="btn btn-primary" onclick="window.location.href='#addCourse';">Add New Course</button>
+</div>
+<br />
 
 <table class="table table-striped table-hover">
     <thead>
@@ -52,8 +57,10 @@
     </tbody>
 </table>
 
-
+<p id="addCourse"> </p>
+<br />
 <hr>
+<br />
 
 <div class="container-fluid">
     <form action="/courses" method="post" class="form-horizontal">
