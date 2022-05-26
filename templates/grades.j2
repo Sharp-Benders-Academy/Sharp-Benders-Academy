@@ -113,9 +113,9 @@
 
             <!-- Select Basic -->
             <div class="form-group py-2">
-                <label class="col-md-4 control-label" for="courseid">Course Name</label>
+                <label class="col-md-4 control-label" for="course_id">Course Name</label>
                 <div class="col-md-4">
-                    <select id="courseid" name="courseid" class="form-control form-select" required>
+                    <select id="course_id" name="course_id" class="form-control form-select" required>
                         <option value="" disabled selected hidden>Please Choose...</option>
                         {% for course in courses %}
                         <option value="{{course.course_id}}">{{course.Course}}</option>
@@ -128,12 +128,12 @@
             <div class="form-group pt-2">
                 <label class="col-md-4 control-label" for="passed_course">Grade</label>
                 <div class="col-md-4">
-                    <label class="radio-inline mx-1" for="passed_course-0">
-                        <input type="radio" name="passed_course" id="passed_course" value="1" checked="checked">
+                    <label class="radio-inline mx-1" for="passed_course-1">
+                        <input type="radio" name="passed_course-1" id="passed_course-1" value="1" checked="checked">
                         Pass
                     </label>
-                    <label class="radio-inline mx-1" for="passed_course-1">
-                        <input type="radio" name="passed_course" id="passed_course" value="0">
+                    <label class="radio-inline mx-1" for="passed_course-0">
+                        <input type="radio" name="passed_course-0" id="passed_course-0" value="0">
                         Fail
                     </label>
                 </div>
