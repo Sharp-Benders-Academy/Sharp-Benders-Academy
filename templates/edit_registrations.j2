@@ -39,7 +39,7 @@
                     <div class="form-group py-2">
                         <label class="col-md-4 control-label" for="studentid">Student Name</label>
                         <div class="col-md-4">
-                            <select id="studentid" name="studentid" class="form-control">
+                            <select id="studentid" name="studentid" class="form-control form-select">
                                 {% for student in students %}
                                 <option value="{{student.student_id}}" {{'selected' if data[0].Student==student.Student
                                     }}>
@@ -54,7 +54,7 @@
                     <div class="form-group py-2">
                         <label class="col-md-4 control-label" for="courseid">Course Name</label>
                         <div class="col-md-4">
-                            <select id="courseid" name="courseid" class="form-control">
+                            <select id="courseid" name="courseid" class="form-control form-select">
                                 {% for course in courses %}
                                 <option value="{{course.course_id}}" {{'selected' if data[0].Course==course.Course}}>
                                     {{course.Course}}</option>
@@ -67,7 +67,7 @@
                     <div class="form-group py-2">
                         <label class="col-md-4 control-label" for="semesterid">Semester</label>
                         <div class="col-md-2">
-                            <select id="semesterid" name="semesterid" class="form-control">
+                            <select id="semesterid" name="semesterid" class="form-control form-select">
                                 {% for semester in semesters %}
                                 <option value="{{semester.semester_id}}" {{'selected' if
                                     data[0].Semester==semester.Semester }}>{{semester.Semester}}</option>
