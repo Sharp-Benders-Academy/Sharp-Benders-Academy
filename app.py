@@ -320,16 +320,6 @@ def courses_instructors():
 
 
 
-
-
-
-
-
-
-
-
-
-
 @app.route('/registrations', methods=['POST', 'GET'])
 def registrations():
 
