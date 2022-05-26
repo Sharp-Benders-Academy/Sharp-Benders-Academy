@@ -24,12 +24,20 @@
     <p class="text-muted">View, add, or search for student grades</p>
 </div>
 
+<!-- Add New Grade Button -->
+<div class="container-fluid text-center">
+    <button class="btn btn-primary" onclick="window.location.href='#addGrade';">Add New Grade</button>
+</div>
+<br />
+
+<hr>
+
 <div class="container-fluid">
     <form class="form-horizontal">
         <fieldset>
 
             <!-- Form Name -->
-            <legend>Search/Filter</legend>
+            <legend>Filter for a Student's Grade</legend>
 
             <!-- Select Basic -->
             <div class="form-group pt-2">
@@ -56,7 +64,10 @@
     </form>
 </div>
 
+<p id="addGrade"> </p>
+<br />
 <hr>
+<br />
 
 <table class="table table-striped table-hover">
     <thead>
