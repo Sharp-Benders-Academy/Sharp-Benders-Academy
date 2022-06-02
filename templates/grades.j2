@@ -129,10 +129,12 @@
 
             <!-- Multiple Radios (inline) -->
             <div class="form-group pt-2">
-                <label class="col-md-4 control-label" for="passed_course">Please check the box if student received a failing grade</label>
+                <label class="col-md-4 control-label" for="passed_course">Grade</label>
                 <div class="col-md-4">
-                    <label class="checkbox-inline" for="passed_course">
-                        <input type="checkbox" name="passed_course" id="passed_course" value="0">
+                    <label class="radio" for="passed_course">
+                        <input type="radio" name="passed_course" id="passed_course" value="1">
+                        Passed
+                        <input type="radio" name="passed_course" id="passed_course" value="0">
                         Failed
                     </label>
                 </div>
