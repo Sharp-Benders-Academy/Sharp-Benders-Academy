@@ -24,8 +24,14 @@
     <p class="text-muted">View filtered grades based on student</p>
 </div>
 
-
 <hr>
+
+<div class="container-fluid text-center">
+    <h5>You are looking at grades for the following student:</h5>
+    <h3><b>{{ student_name[0].Student }}</b></h3>
+    <p>If this page is empty, the student has not received any grades yet.</p>
+</div>
+
 
 <div style="display: block; max-height: 450px; overflow-y: auto; width:100%;">
     <table class="table table-striped table-hover">
