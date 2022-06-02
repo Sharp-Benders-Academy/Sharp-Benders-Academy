@@ -30,32 +30,35 @@
 </div>
 <br />
 
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            {% for key in courses[0].keys() %}
+<div style="display: block; max-height: 450px; overflow-y: auto; width:100%;">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr style="position:sticky; top: 0; background-color: rgb(220, 220, 220);">
+                {% for key in courses[0].keys() %}
 
-            <th scope="col"> {{ key }} </th>
+                <th scope="col"> {{ key }} </th>
 
-            {% endfor %}
-            <th scope="col">Delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for course in courses %}
-        {% set courseID = course['Course ID'] %}
-        <tr id="{{courseID}}">
-            {% for key in course.keys() %}
-
-            <td>{{course[key]}}
                 {% endfor %}
-            <td><a href="delete_course/{{courseID}}">
-                    <img src="{{ url_for('static', filename='images/trash.svg')}}" alt="Delete" width="20" height="20">
-                </a></td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for course in courses %}
+            {% set courseID = course['Course ID'] %}
+            <tr id="{{courseID}}">
+                {% for key in course.keys() %}
+
+                <td>{{course[key]}}
+                    {% endfor %}
+                <td><a href="delete_course/{{courseID}}">
+                        <img src="{{ url_for('static', filename='images/trash.svg')}}" alt="Delete" width="20"
+                            height="20">
+                    </a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
 <p id="addCourse"> </p>
 <br />

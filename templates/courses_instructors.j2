@@ -26,31 +26,34 @@
 
 <!-- Add New Course_Instructor Button -->
 <div class="container-fluid text-center">
-    <button class="btn btn-primary" onclick="window.location.href='#addCourseInstructor';">Add New Course_Instructor</button>
+    <button class="btn btn-primary" onclick="window.location.href='#addCourseInstructor';">Add New
+        Course_Instructor</button>
 </div>
 <br />
 
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            {% for key in courses_instructors[0].keys() %}
+<div style="display: block; max-height: 450px; overflow-y: auto; width:100%;">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr style="position:sticky; top: 0; background-color: rgb(220, 220, 220);">
+                {% for key in courses_instructors[0].keys() %}
 
-            <th scope="col"> {{ key }} </th>
+                <th scope="col"> {{ key }} </th>
 
-            {% endfor %}
-        </tr>
-    </thead>
-    <tbody>
-        {% for course_instructor in courses_instructors %}
-        <tr>
-            {% for key in course_instructor.keys() %}
-
-            <td>{{course_instructor[key]}}
                 {% endfor %}
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+            </tr>
+        </thead>
+        <tbody>
+            {% for course_instructor in courses_instructors %}
+            <tr>
+                {% for key in course_instructor.keys() %}
+
+                <td>{{course_instructor[key]}}
+                    {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
 <p id="addCourseInstructor"> </p>
 <br />
