@@ -542,6 +542,32 @@ def grades():
 
     return render_template("grades.j2", grades=grades, students=students, courses=courses)
 
+@app.route('/filter_grades', methods=['GET'])
+def filter_grades():
+
+        # grab user form input for filter_student_id
+        filter_student_id = request.form["filter_student_id"]
+
+        # mySQL query to grab the info of the grades with our passed student_id
+        query = """
+        SELECT grade_id AS "Grade ID", 
+        CONCAT(Students.first_name, ' ', Students.last_name) AS Student, 
+        Courses.title AS Course,
+        CASE 
+            WHEN passed_course = 1 THEN 'YES'
+            WHEN passed_course = 0 THEN 'NO'
+        END AS "Passed Course"
+        FROM Grades 
+        INNER JOIN Students ON Grades.student_id = Students.student_id
+        INNER JOIN Courses ON Grades.course_id = Courses.course_id
+        WHERE CONCAT(Students.first_name, ' ', Students.last_name) 
+        = %s;
+        """ % (filter_student_id)
+        cursor = db.execute_query(db_connection=db_connection, query=query)
+        grades = cursor.fetchall()
+
+        # render grades_filter page passing our query data for grades and the student_id to the template
+        return render_template("grades_filter.j2", grades=grades, student_id=student_id)
 
 # Listener
 if __name__ == "__main__":

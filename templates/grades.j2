@@ -33,7 +33,7 @@
 <hr>
 
 <div class="container-fluid">
-    <form class="form-horizontal">
+    <form action="/filter_grades" class="form-horizontal">
         <fieldset>
 
             <!-- Form Name -->
@@ -46,6 +46,7 @@
                     <select id="filter_student_id" name="filter_student_id" class="form-control form-select" required>
                         <option value="" disabled selected hidden>Please Choose...</option>
                         {% for student in students %}
+                        {% set filter_student_id = student.student_id %}
                         <option value="{{student.student_id}}">{{student.Student}}</option>
                         {% endfor %}
                     </select>
