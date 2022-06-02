@@ -21,7 +21,7 @@
 
 <div class="container-fluid text-center">
     <h1 class="display-5">Courses_Instructors</h1>
-    <p class="text-muted">View or add courses with their respective instructor(s)</p>
+    <p class="text-muted">View, add or delete courses with their respective instructor(s)</p>
 </div>
 
 <!-- Add New Course_Instructor Button -->
@@ -40,15 +40,21 @@
                 <th scope="col"> {{ key }} </th>
 
                 {% endfor %}
+                <th scope="col">Delete</th>
             </tr>
         </thead>
         <tbody>
             {% for course_instructor in courses_instructors %}
-            <tr>
+            {% set course_instructor_id = course_instructor['Course_Instructor ID'] %}
+            <tr id="{{course_instructor_id}}">
                 {% for key in course_instructor.keys() %}
 
                 <td>{{course_instructor[key]}}
                     {% endfor %}
+                <td><a href="delete_course_instructor/{{course_instructor_id}}">
+                        <img src="{{ url_for('static', filename='images/trash.svg')}}" alt="Delete" width="20"
+                            height="20">
+                    </a></td>
             </tr>
             {% endfor %}
         </tbody>

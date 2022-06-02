@@ -267,6 +267,10 @@ INSERT INTO Courses_Instructors
 VALUES 
 (:instructor_id_from_dropdown_input, :course_id_from_dropdown_input)
 
+-- Delete a Course_Instructor
+DELETE FROM Courses_Instructors 
+WHERE course_instructor_id = :course_instructor_id_selected_from_courses_instructors_list;
+
 
 
 ---------------------------------------------------------------------------
