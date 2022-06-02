@@ -291,3 +291,7 @@ INSERT INTO Semesters
 (semester_id, title) 
 VALUES 
 (:semester_id_input, :title_input)
+
+-- Delete a Semester
+DELETE FROM Semesters 
+WHERE semester_id = :semester_id_selected_from_semesters_list;

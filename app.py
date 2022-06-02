@@ -529,6 +529,17 @@ def semesters():
     return render_template("semesters.j2", semesters=semesters)
 
 
+@app.route('/delete_semester/<semester_id>')
+def delete_semester(semester_id):
+    # mySQL query to delete the semester with our passed id
+    query = "DELETE FROM Semesters WHERE semester_id = %s;"
+    cursor = db.execute_query(
+        db_connection=db_connection, query=query, query_params=(semester_id,))
+
+    # redirect back to Semesters page
+    return redirect("/semesters")
+
+
 @app.route('/grades', methods=['POST', 'GET'])
 def grades():
     

@@ -39,13 +39,19 @@
                 <th scope="col"> {{ key }} </th>
 
                 {% endfor %}
+                <th scope="col">Delete</th>
             </tr>
         </thead>
         <tbody>
             {% for semester in semesters %}
-            <tr>
+            {% set semester_id = semester['Semester ID'] %}
+            <tr id="{{semester_id}}">
                 <th scope="row">{{semester['Semester ID']}}</th>
                 <td>{{semester['Title']}}</td>
+                <td><a href="delete_semester/{{semester_id}}">
+                        <img src="{{ url_for('static', filename='images/trash.svg')}}" alt="Delete" width="20"
+                            height="20">
+                    </a></td>
             </tr>
             {% endfor %}
         </tbody>
