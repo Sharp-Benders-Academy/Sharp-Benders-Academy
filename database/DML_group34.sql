@@ -1,15 +1,15 @@
 -- CS 340 - Databases
 -- Group 34 - Sharp Squad: Elizabeth Thorne and Faihaan Arif
 -- Project: Sharp Benders Academy
--- Database Manipulation Queries, in the follow order (All have SELECT and INSERT Queries):
--- 1. Students (Delete Query)
+-- Database Manipulation Queries, in the follow order (All have SELECT, INSERT and DELETE Queries):
+-- 1. Students
 -- 2. Instructors
--- 3. Advisors (Delete Query)
--- 4. Registrations (Update and Delete Queries)
--- 5. Grades (Search/Filter Queries)
--- 6. Courses (Delete Query)
+-- 3. Advisors
+-- 4. Registrations (Update Query)
+-- 5. Grades (Search/Filter Query)
+-- 6. Courses
 -- 7. Courses_Instructors
--- 8. Majors (Delete Query)
+-- 8. Majors
 -- 9. Semesters
 
 ---------------------------------------------------------------------------
@@ -66,6 +66,10 @@ VALUES
 (:first_name_input, :last_name_input, :school_email_input, 
 :phone_number_input, :address_line1_input, :address_line2_input, 
 :city_input, :state_input, :postal_code_input)
+
+-- Delete an Instructor
+DELETE FROM Instructors 
+WHERE instructor_id = :instructor_id_selected_from_instructors_list;
 
 
 

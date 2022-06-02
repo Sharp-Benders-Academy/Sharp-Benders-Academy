@@ -227,6 +227,17 @@ def instructors():
     return render_template("instructors.j2", instructors=instructors)
 
 
+@app.route('/delete_instructor/<int:instructor_id>')
+def delete_instructor(instructor_id):
+    # mySQL query to delete the instructor with our passed id
+    query = "DELETE FROM Instructors WHERE instructor_id = %s;"
+    cursor = db.execute_query(
+        db_connection=db_connection, query=query, query_params=(instructor_id,))
+
+    # redirect back to Instructors page
+    return redirect("/instructors")
+
+
 @app.route('/courses', methods=['POST', 'GET'])
 def courses():
     
