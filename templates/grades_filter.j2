@@ -27,8 +27,8 @@
 <hr>
 
 <div class="container-fluid text-center">
-    <h5>You are looking at grades for the following student:</h5>
-    <h3><b>{{ student_name[0].Student }}</b></h3>
+    <h5>You are looking at all grades for <b>{{ student_name[0].Student }}</b></h5>
+    <br></br>
 </div>
 
 
@@ -55,5 +55,10 @@
         </tbody>
     </table>
 </div>
+
+<div class="container-fluid text-center">
+    <a href="/grades"><button type="button" class="btn btn-primary">Go Back to All Student Grades</button></a>
+</div>
+
 
 {% endblock %}
