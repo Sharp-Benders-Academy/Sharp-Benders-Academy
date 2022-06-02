@@ -92,7 +92,7 @@
 <br />
 
 <div class="container-fluid">
-    <form class="form-horizontal">
+    <form action="/grades" method="post" class="form-horizontal">
         <fieldset>
 
             <!-- Form Name -->
@@ -126,15 +126,11 @@
 
             <!-- Multiple Radios (inline) -->
             <div class="form-group pt-2">
-                <label class="col-md-4 control-label" for="passed_course">Grade</label>
+                <label class="col-md-4 control-label" for="passed_course">Please check the box if student received a failing grade</label>
                 <div class="col-md-4">
-                    <label class="radio-inline mx-1" for="passed_course-1">
-                        <input type="radio" name="passed_course-1" id="passed_course-1" value="1" checked="checked">
-                        Pass
-                    </label>
-                    <label class="radio-inline mx-1" for="passed_course-0">
-                        <input type="radio" name="passed_course-0" id="passed_course-0" value="0">
-                        Fail
+                    <label class="checkbox-inline" for="passed_course">
+                        <input type="checkbox" name="passed_course" id="passed_course" value="0">
+                        Failed
                     </label>
                 </div>
             </div>

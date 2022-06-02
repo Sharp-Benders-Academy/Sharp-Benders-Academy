@@ -503,7 +503,7 @@ def grades():
         INSERT INTO Grades 
         (passed_course, student_id, course_id) 
         VALUES 
-        (%s, %s, %s, %s)
+        (%s, %s, %s)
         """
         cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(
             passed_course, student_id, course_id))
