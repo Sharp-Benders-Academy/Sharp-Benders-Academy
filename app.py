@@ -540,7 +540,15 @@ def grades():
     cursor = db.execute_query(db_connection=db_connection, query=query3)
     courses = cursor.fetchall()
 
-    return render_template("grades.j2", grades=grades, students=students, courses=courses)
+    # Populate Filter Students dropdown (only if they have a Grade)
+    query4 = """
+    SELECT DISTINCT Students.student_id, CONCAT(Students.first_name, ' ', Students.last_name) AS Student FROM Students
+    INNER JOIN Grades ON Grades.student_id = Students.student_id;
+    """
+    cursor = db.execute_query(db_connection=db_connection, query=query4)
+    students_with_grades = cursor.fetchall()
+
+    return render_template("grades.j2", grades=grades, students=students, courses=courses, students_with_grades=students_with_grades)
 
 @app.route('/filter_grades', methods=['POST', 'GET'])
 def filter_grades():

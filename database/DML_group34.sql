@@ -189,6 +189,10 @@ WHERE CONCAT(Students.first_name, ' ', Students.last_name)
  = :student_selected_from_browse_students_page
 
 
+-- Drop down menu for Grades page to filter based on student, only shows students who have a grade (updated)
+SELECT DISTINCT Students.student_id, CONCAT(Students.first_name, ' ', Students.last_name) AS Student FROM Students
+INNER JOIN Grades ON Grades.student_id = Students.student_id;
+
 ---------------------------------------------------------------------------
 -- 6. Courses
 
