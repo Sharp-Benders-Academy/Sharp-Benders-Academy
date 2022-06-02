@@ -79,7 +79,7 @@ def students():
     return render_template("students.j2", students=students, majors=majors, advisors=advisors)
 
 @app.route('/delete_student/<int:student_id>')
-def delete_course(student_id):
+def delete_student(student_id):
     # mySQL query to delete the student with our passed id
     query = "DELETE FROM Students WHERE student_id = %s;"
     cursor = db.execute_query(
