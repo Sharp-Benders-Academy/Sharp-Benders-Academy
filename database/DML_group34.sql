@@ -2,9 +2,9 @@
 -- Group 34 - Sharp Squad: Elizabeth Thorne and Faihaan Arif
 -- Project: Sharp Benders Academy
 -- Database Manipulation Queries, in the follow order (All have SELECT and INSERT Queries):
--- 1. Students (Delete Query))
+-- 1. Students (Delete Query)
 -- 2. Instructors
--- 3. Advisors
+-- 3. Advisors (Delete Query)
 -- 4. Registrations (Update and Delete Queries)
 -- 5. Grades (Search/Filter Queries)
 -- 6. Courses (Delete Query)
@@ -88,6 +88,9 @@ VALUES
 :phone_number_input, :address_line1_input, :address_line2_input, 
 :city_input, :state_input, :postal_code_input)
 
+-- Delete an Advisor
+DELETE FROM Advisors 
+WHERE advisor_id = :advisor_id_selected_from_advisors_list;
 
 
 ---------------------------------------------------------------------------

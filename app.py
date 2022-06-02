@@ -172,6 +172,17 @@ def advisors():
     return render_template("advisors.j2", advisors=advisors)
 
 
+@app.route('/delete_advisor/<int:advisor_id>')
+def delete_advisor(advisor_id):
+    # mySQL query to delete the advisor with our passed id
+    query = "DELETE FROM Advisors WHERE advisor_id = %s;"
+    cursor = db.execute_query(
+        db_connection=db_connection, query=query, query_params=(advisor_id,))
+
+    # redirect back to Advisors page
+    return redirect("/advisors")
+
+
 @app.route('/instructors', methods=['POST', 'GET'])
 def instructors():
 
@@ -202,7 +213,7 @@ def instructors():
 
         return redirect("/instructors")
 
-    # Populate Advisors table
+    # Populate Instructors table
     query = '''
     SELECT instructor_id AS ID, first_name AS First, last_name AS Last, 
     school_email AS Email, phone_number AS Phone, 

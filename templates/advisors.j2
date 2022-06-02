@@ -21,7 +21,7 @@
 
 <div class="container-fluid text-center">
     <h1 class="display-5">Advisors</h1>
-    <p class="text-muted">View or add advisors</p>
+    <p class="text-muted">View, add or delete advisors</p>
 </div>
 
 <!-- Add New Advisor Button -->
@@ -39,15 +39,21 @@
                 <th scope="col"> {{ key }} </th>
 
                 {% endfor %}
+                <th scope="col">Delete</th>
             </tr>
         </thead>
         <tbody>
             {% for advisor in advisors %}
-            <tr>
+            {% set advisor_id = advisor['ID'] %}
+            <tr id="{{advisor_id}}">
                 {% for key in advisor.keys() %}
 
                 <td>{{advisor[key]}}
                     {% endfor %}
+                <td><a href="delete_advisor/{{advisor_id}}">
+                        <img src="{{ url_for('static', filename='images/trash.svg')}}" alt="Delete" width="20"
+                            height="20">
+                    </a></td>
             </tr>
             {% endfor %}
         </tbody>
