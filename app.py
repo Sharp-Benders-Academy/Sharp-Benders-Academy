@@ -118,6 +118,16 @@ def majors():
 
     return render_template("majors.j2", majors=majors)
 
+@app.route('/delete_major/<major_id>')
+def delete_major(major_id):
+    # mySQL query to delete the major with our passed id
+    query = "DELETE FROM Majors WHERE major_id = %s;"
+    cursor = db.execute_query(
+        db_connection=db_connection, query=query, query_params=(major_id,))
+
+    # redirect back to Majors page
+    return redirect("/majors")
+
 
 @app.route('/advisors', methods=['POST', 'GET'])
 def advisors():

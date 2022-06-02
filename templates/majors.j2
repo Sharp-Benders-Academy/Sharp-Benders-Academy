@@ -21,7 +21,7 @@
 
 <div class="container-fluid text-center">
     <h1 class="display-5">Majors</h1>
-    <p class="text-muted">View or add majors</p>
+    <p class="text-muted">View, add or delete majors</p>
 </div>
 
 <!-- Add New Student Button -->
@@ -39,13 +39,19 @@
                 <th scope="col"> {{ key }} </th>
 
                 {% endfor %}
+                <th scope="col">Delete</th>
             </tr>
         </thead>
         <tbody>
             {% for major in majors %}
-            <tr>
+            {% set major_id = major['Major ID'] %}
+            <tr id="{{major_id}}">
                 <th scope="row">{{major['Major ID']}}</th>
                 <td>{{major['Title']}}</td>
+                <td><a href="delete_major/{{major_id}}">
+                        <img src="{{ url_for('static', filename='images/trash.svg')}}" alt="Delete" width="20"
+                            height="20">
+                    </a></td>
             </tr>
             {% endfor %}
         </tbody>

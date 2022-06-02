@@ -9,7 +9,7 @@
 -- 5. Grades (Search/Filter Queries)
 -- 6. Courses (Delete Query)
 -- 7. Courses_Instructors
--- 8. Majors
+-- 8. Majors (Delete Query)
 -- 9. Semesters
 
 ---------------------------------------------------------------------------
@@ -268,7 +268,9 @@ INSERT INTO Majors
 VALUES 
 (:major_id_input, :title_input)
 
-
+-- Delete a Major
+DELETE FROM Majors 
+WHERE major_id = :major_id_selected_from_major_list;
 
 ---------------------------------------------------------------------------
 -- 9. Semesters
