@@ -41,13 +41,13 @@
 
             <!-- Select Basic -->
             <div class="form-group pt-2">
-                <label class="col-md-4 control-label" for="studentsearch">Student Name</label>
+                <label class="col-md-4 control-label" for="filter_student_id">Student Name</label>
                 <div class="col-md-4">
-                    <select id="studentsearch" name="studentsearch" class="form-control form-select" required>
+                    <select id="filter_student_id" name="filter_student_id" class="form-control form-select" required>
                         <option value="" disabled selected hidden>Please Choose...</option>
-                        <option value="1">Korra Smith</option>
-                        <option value="2">Aang Cook</option>
-                        <option value="3">Roku Hunter</option>
+                        {% for student in students %}
+                        <option value="{{student.student_id}}">{{student.Student}}</option>
+                        {% endfor %}
                     </select>
                 </div>
             </div>
