@@ -202,6 +202,13 @@ WHERE CONCAT(Students.first_name, ' ', Students.last_name)
 SELECT DISTINCT Students.student_id, CONCAT(Students.first_name, ' ', Students.last_name) AS Student FROM Students
 INNER JOIN Grades ON Grades.student_id = Students.student_id;
 
+-- Delete a Grade
+DELETE FROM Grades 
+WHERE grade_id = :grade_id_selected_from_grade_list;
+
+
+
+
 ---------------------------------------------------------------------------
 -- 6. Courses
 

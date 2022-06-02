@@ -21,7 +21,7 @@
 
 <div class="container-fluid text-center">
     <h1 class="display-5">Grades</h1>
-    <p class="text-muted">View, add, or search for student grades</p>
+    <p class="text-muted">View, add, delete or search for student grades</p>
 </div>
 
 <!-- Add New Grade Button -->
@@ -76,15 +76,21 @@
                 <th scope="col"> {{ key }} </th>
 
                 {% endfor %}
+                <th scope="col">Delete</th>
             </tr>
         </thead>
         <tbody>
             {% for grade in grades %}
-            <tr>
+            {% set grade_id = grade['Grade ID'] %}
+            <tr id="{{grade_id}}">
                 {% for key in grade.keys() %}
 
                 <td>{{grade[key]}}
                     {% endfor %}
+                <td><a href="delete_grade/{{grade_id}}">
+                        <img src="{{ url_for('static', filename='images/trash.svg')}}" alt="Delete" width="20"
+                            height="20">
+                    </a></td>
             </tr>
             {% endfor %}
         </tbody>

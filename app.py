@@ -638,6 +638,18 @@ def filter_grades():
     # render grades_filter page passing our query data for grades and the student_id to the template
     return render_template("grades_filter.j2", grades=grades, student_name=student_name)
 
+
+@app.route('/delete_grade/<int:grade_id>')
+def delete_grade(grade_id):
+    # mySQL query to delete the grade with our passed id
+    query = "DELETE FROM Grades WHERE grade_id = %s;"
+    cursor = db.execute_query(
+        db_connection=db_connection, query=query, query_params=(grade_id,))
+
+    # redirect back to grades page
+    return redirect("/grades")
+
+
 # Listener
 if __name__ == "__main__":
 
