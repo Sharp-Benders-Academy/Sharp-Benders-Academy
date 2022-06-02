@@ -44,11 +44,16 @@
         </thead>
         <tbody>
             {% for student in students %}
-            <tr>
+            {% set student_id = student['ID'] %}
+            <tr id="{{student_id}}">
                 {% for key in student.keys() %}
 
                 <td>{{student[key]}}
                     {% endfor %}
+                <td><a href="delete_student/{{student_id}}">
+                        <img src="{{ url_for('static', filename='images/trash.svg')}}" alt="Delete" width="20"
+                            height="20">
+                    </a></td>
             </tr>
             {% endfor %}
         </tbody>

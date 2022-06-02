@@ -78,6 +78,15 @@ def students():
     # Sends the results back to the web browser.
     return render_template("students.j2", students=students, majors=majors, advisors=advisors)
 
+@app.route('/delete_student/<int:student_id>')
+def delete_course(student_id):
+    # mySQL query to delete the student with our passed id
+    query = "DELETE FROM Students WHERE student_id = %s;"
+    cursor = db.execute_query(
+        db_connection=db_connection, query=query, query_params=(student_id,))
+
+    # redirect back to Students page
+    return redirect("/students")
 
 @app.route('/majors', methods=['POST', 'GET'])
 def majors():
