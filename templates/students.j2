@@ -52,7 +52,7 @@
 
                 <td>{{student[key]}}
                     {% endfor %}
-                <td><a href=""><img src="{{ url_for('static', filename='images/pencil.svg')}}"
+                <td><a href="edit_student/{{student_id}}"><img src="{{ url_for('static', filename='images/pencil.svg')}}"
                         alt="Edit" width="20" height="20"></a></td>
                 <td><a href="delete_student/{{student_id}}">
                         <img src="{{ url_for('static', filename='images/trash.svg')}}" alt="Delete" width="20"
