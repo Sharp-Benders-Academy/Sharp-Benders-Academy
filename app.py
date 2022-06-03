@@ -109,7 +109,7 @@ def edit_student(student_id):
         data = cursor.fetchall()
 
         # Populate Majors dropdown
-        query2 = 'SELECT major_id, title AS Title FROM Majors;'
+        query2 = 'SELECT major_id, title AS Major FROM Majors;'
         cursor = db.execute_query(db_connection=db_connection, query=query2)
         majors = cursor.fetchall()
 
