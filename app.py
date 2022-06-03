@@ -139,14 +139,14 @@ def edit_student(student_id):
 
         query = '''
         UPDATE Students 
-        SET first_name = %s, last_name = %s, 
+        SET first_name = %s, last_name = %s, school_email = %s, phone_number = %s, 
         address_line1 = %s, address_line2 = %s, city = %s, 
-        state = %s, postal_code = %s, major_id = %s, advisor_id = %s,
-        WHERE student_id = %s
+        state = %s, postal_code = %s, major_id = %s, advisor_id = %s
+        WHERE student_id = %s;
         '''
         cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(
-            fname, lname, aline1, aline2, city, state, 
-            postal_code, major_id, advisor_id, semesterid, student_id))
+            fname, lname, email, phone, aline1, aline2, city, state, 
+            postal, major_id, advisor_id, student_id))
 
         return redirect("/students")
 
