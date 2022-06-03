@@ -47,6 +47,9 @@
                                     {{major.Major}}
                                 </option>
                                 {% endfor %}
+                                <option value="NULL" {{'selected' if data[0].Major==None
+                                    }}>
+                                    None</option>
                             </select>
                         </div>
                     </div>
