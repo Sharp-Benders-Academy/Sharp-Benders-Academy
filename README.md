@@ -39,3 +39,11 @@ if __name__ == "__main__":
 ```bash
 gunicorn -b 0.0.0.0:XXXX -D app:app
 ```
+
+## Image Citations
+
+**Homepage Rotator Images**
+- (May 2022) The Last Airbender HD wallpaper, image source, https://www.wallpaperflare.com/avatar-digital-wallpaper-avatar-the-last-airbender-wallpaper-270453
+- (May 2022) Avatar Cycle Wallpaper, image source, https://cutewallpaper.org/download.php?file=/22/avatar-cycle-wallpapers/2387024546.jpg
+- (May 2022) Wallpaper Avatar the Last Airbender, image source, https://wallpaperforu.com/wallpaper-avatar-the-last-airbender/
+
