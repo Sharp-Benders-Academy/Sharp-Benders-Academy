@@ -36,6 +36,21 @@
                     <legend>Edit Student</legend>
 
                     
+                    <!-- Select Basic -->
+                    <div class="form-group py-2">
+                        <label class="col-md-4 control-label" for="major_id">Major</label>
+                        <div class="col-md-4">
+                            <select id="major_id" name="major_id" class="form-control form-select">
+                                {% for major in majors %}
+                                <option value="{{major.major_id}}" {{'selected' if data[0].Title==major.Title
+                                    }}>
+                                    {{major.Title}}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
                     <!-- Button -->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="submit"></label>

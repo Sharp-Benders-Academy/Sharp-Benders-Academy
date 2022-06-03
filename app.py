@@ -109,7 +109,7 @@ def edit_student(student_id):
         data = cursor.fetchall()
 
         # Populate Majors dropdown
-        query2 = 'SELECT major_id, title FROM Majors;'
+        query2 = 'SELECT major_id, title AS Title FROM Majors;'
         cursor = db.execute_query(db_connection=db_connection, query=query2)
         majors = cursor.fetchall()
 
@@ -120,6 +120,35 @@ def edit_student(student_id):
 
         # render students_edit page passing our query data, majors and advisors to the edit_student template
         return render_template('students_edit.j2', data=data, majors=majors, advisors=advisors, student_id=student_id)
+
+    if request.method == "POST":
+        # fire off if user clicks the 'Edit Student' button
+
+        # grab user form inputs
+        fname = request.form["fname"]
+        lname = request.form["lname"]
+        email = request.form["email"]
+        phone = request.form["phone"]
+        aline1 = request.form["aline1"]
+        aline2 = request.form["aline2"]
+        city = request.form["city"]
+        state = request.form["state"]
+        postal = request.form["postal"]
+        major_id = request.form["major_id"]
+        advisor_id = request.form["advisor_id"]
+
+        query = '''
+        UPDATE Students 
+        SET first_name = %s, last_name = %s, 
+        address_line1 = %s, address_line2 = %s, city = %s, 
+        state = %s, postal_code = %s, major_id = %s, advisor_id = %s,
+        WHERE student_id = %s
+        '''
+        cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(
+            fname, lname, aline1, aline2, city, state, 
+            postal_code, major_id, advisor_id, semesterid, student_id))
+
+        return redirect("/students")
 
 
 @app.route('/majors', methods=['POST', 'GET'])
