@@ -51,6 +51,21 @@
                         </div>
                     </div>
 
+                    <!-- Select Basic -->
+                    <div class="form-group py-2">
+                        <label class="col-md-4 control-label" for="advisor_id">Advisor</label>
+                        <div class="col-md-4">
+                            <select id="advisor_id" name="advisor_id" class="form-control form-select">
+                                {% for advisor in advisors %}
+                                <option value="{{advisor.advisor_id}}" {{'selected' if data[0].Advisor==advisor.Advisor
+                                    }}>
+                                    {{advisor.Advisor}}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
                     <!-- Button -->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="submit"></label>
