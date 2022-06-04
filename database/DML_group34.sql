@@ -2,7 +2,7 @@
 -- Group 34 - Sharp Squad: Elizabeth Thorne and Faihaan Arif
 -- Project: Sharp Benders Academy
 -- Database Manipulation Queries, in the follow order (All have SELECT, INSERT and DELETE Queries):
--- 1. Students
+-- 1. Students (Update Query)
 -- 2. Instructors
 -- 3. Advisors
 -- 4. Registrations (Update Query)
