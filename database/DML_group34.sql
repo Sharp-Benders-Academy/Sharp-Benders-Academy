@@ -1,7 +1,14 @@
+-- Citation for the DML queries
+-- Date: May 2022
+-- Adapted from CS 340 Course at Oregon State University example DML for bsg sample data 
+-- Source URL: https://canvas.oregonstate.edu/courses/1870053/assignments/8817246?module_item_id=22036035
+
+---------------------------------------------------------------------------
 -- CS 340 - Databases
 -- Group 34 - Sharp Squad: Elizabeth Thorne and Faihaan Arif
 -- Project: Sharp Benders Academy
--- Database Manipulation Queries, in the follow order (All have SELECT, INSERT and DELETE Queries):
+-- Database Manipulation Queries, in the follow order: 
+-- (All have SELECT, INSERT and DELETE Queries)
 -- 1. Students (Update Query)
 -- 2. Instructors
 -- 3. Advisors
