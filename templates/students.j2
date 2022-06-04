@@ -5,15 +5,15 @@
 {% block navlinks %}
 <div class="navbar-nav nav-tabs">
     <a class="nav-link mx-3" aria-current="page" href="/">Home</a>
-    <a class="nav-link active" aria-current="page" href="students">Students</a>
-    <a class="nav-link" href="majors">Majors</a>
-    <a class="nav-link" href="advisors">Advisors</a>
-    <a class="nav-link" href="instructors">Instructors</a>
-    <a class="nav-link" href="courses">Courses</a>
-    <a class="nav-link" href="courses_instructors">Courses_Instructors</a>
-    <a class="nav-link" href="registrations">Registrations</a>
-    <a class="nav-link" href="semesters">Semesters</a>
-    <a class="nav-link" href="grades">Grades</a>
+    <a class="nav-link active" aria-current="page" href="/students">Students</a>
+    <a class="nav-link" href="/majors">Majors</a>
+    <a class="nav-link" href="/advisors">Advisors</a>
+    <a class="nav-link" href="/instructors">Instructors</a>
+    <a class="nav-link" href="/courses">Courses</a>
+    <a class="nav-link" href="/courses_instructors">Courses_Instructors</a>
+    <a class="nav-link" href="/registrations">Registrations</a>
+    <a class="nav-link" href="/semesters">Semesters</a>
+    <a class="nav-link" href="/grades">Grades</a>
 </div>
 {% endblock %}
 
@@ -52,8 +52,9 @@
 
                 <td>{{student[key]}}
                     {% endfor %}
-                <td><a href="edit_student/{{student_id}}"><img src="{{ url_for('static', filename='images/pencil.svg')}}"
-                        alt="Edit" width="20" height="20"></a></td>
+                <td><a href="edit_student/{{student_id}}"><img
+                            src="{{ url_for('static', filename='images/pencil.svg')}}" alt="Edit" width="20"
+                            height="20"></a></td>
                 <td><a href="delete_student/{{student_id}}">
                         <img src="{{ url_for('static', filename='images/trash.svg')}}" alt="Delete" width="20"
                             height="20">
@@ -100,7 +101,8 @@
             <div class="form-group py-2">
                 <label class="col-md-4 control-label" for="email">Email</label>
                 <div class="col-md-4">
-                    <input id="email" name="email" type="email" placeholder="" class="form-control input-md" required="">
+                    <input id="email" name="email" type="email" placeholder="" class="form-control input-md"
+                        required="">
 
                 </div>
             </div>

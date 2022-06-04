@@ -132,7 +132,7 @@ def edit_student(student_id):
         UPDATE Students 
         SET first_name = %s, last_name = %s, school_email = %s, phone_number = %s, 
         address_line1 = %s, address_line2 = %s, city = %s, 
-        state = %s, postal_code = %s, major_id = %s, advisor_id = %s
+        state = %s, postal_code = %s, major_id = NULLIF(%s, 'NULL'), advisor_id = %s
         WHERE student_id = %s;
         '''
         cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(
