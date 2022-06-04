@@ -1,3 +1,16 @@
+# Citation for the Design of our App.py file
+# Date: June 2022
+# Resource: Flask-Starter-App
+# Source URL: https://github.com/osu-cs340-ecampus/flask-starter-app/blob/master/app.py
+
+# Citation for the Design of our views using Blueprints
+# Date: June 2022
+# Resource: Flask.palletsprojects.com
+# Source URL: https://flask.palletsprojects.com/en/2.1.x/blueprints
+
+
+
+
 from crypt import methods
 from distutils.log import debug
 from flask import Flask, render_template, json, redirect, Blueprint

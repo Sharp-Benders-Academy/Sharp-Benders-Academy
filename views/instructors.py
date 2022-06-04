@@ -1,3 +1,8 @@
+# Citation for the Design of our views using Blueprints
+# Date: June 2022
+# Resource: Flask.palletsprojects.com
+# Source URL: https://flask.palletsprojects.com/en/2.1.x/blueprints
+
 from flask import Flask, render_template, json, redirect, Blueprint
 from flask_mysqldb import MySQL
 from flask import request
