@@ -29,18 +29,19 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <form action="/edit_student/{{student_id}}" method="post" class="form-horizontal">
+            <form action="/students/edit_student/{{student_id}}" method="post" class="form-horizontal">
                 <fieldset>
 
                     <!-- Edit_Student -->
                     <legend>Edit Student</legend>
-                    
-                            
+
+
                     <!-- Text input-->
                     <div class="form-group py-2">
                         <label class="col-md-4 control-label" for="fname">First Name</label>
                         <div class="col-md-4">
-                            <input id="fname" name="fname" type="text" value="{{data[0].First}}" class="form-control input-md" required="">
+                            <input id="fname" name="fname" type="text" value="{{data[0].First}}"
+                                class="form-control input-md" required="">
 
                         </div>
                     </div>
@@ -49,7 +50,8 @@
                     <div class="form-group py-2">
                         <label class="col-md-4 control-label" for="lname">Last Name</label>
                         <div class="col-md-4">
-                            <input id="lname" name="lname" type="text" value="{{data[0].Last}}" class="form-control input-md" required="">
+                            <input id="lname" name="lname" type="text" value="{{data[0].Last}}"
+                                class="form-control input-md" required="">
 
                         </div>
                     </div>
@@ -58,7 +60,8 @@
                     <div class="form-group py-2">
                         <label class="col-md-4 control-label" for="email">Email</label>
                         <div class="col-md-4">
-                            <input id="email" name="email" type="email" value="{{data[0].Email}}" class="form-control input-md" required="">
+                            <input id="email" name="email" type="email" value="{{data[0].Email}}"
+                                class="form-control input-md" required="">
 
                         </div>
                     </div>
@@ -77,8 +80,8 @@
                     <div class="form-group py-2">
                         <label class="col-md-4 control-label" for="aline1">Address Line 1</label>
                         <div class="col-md-4">
-                            <input id="aline1" name="aline1" type="text" value="{{data[0]["Address Line 1"]}}" class="form-control input-md"
-                                required="">
+                            <input id="aline1" name="aline1" type="text" value="{{data[0]['Address Line 1']}}"
+                                class="form-control input-md" required="">
 
                         </div>
                     </div>
@@ -87,7 +90,8 @@
                     <div class="form-group py-2">
                         <label class="col-md-4 control-label" for="aline2">Address Line 2</label>
                         <div class="col-md-4">
-                            <input id="aline2" name="aline2" type="text" value="{{data[0]["Address Line 2"]}}" class="form-control input-md">
+                            <input id="aline2" name="aline2" type="text" value="{{data[0]['Address Line 2']}}"
+                                class="form-control input-md">
 
                         </div>
                     </div>
@@ -96,7 +100,8 @@
                     <div class="form-group py-2">
                         <label class="col-md-4 control-label" for="city">City</label>
                         <div class="col-md-2">
-                            <input id="city" name="city" type="text" value="{{data[0].City}}" class="form-control input-md">
+                            <input id="city" name="city" type="text" value="{{data[0].City}}"
+                                class="form-control input-md">
 
                         </div>
                     </div>
@@ -105,7 +110,8 @@
                     <div class="form-group py-2">
                         <label class="col-md-4 control-label" for="state">State</label>
                         <div class="col-md-2">
-                            <input id="state" name="state" type="text" value="{{data[0].State}}" class="form-control input-md">
+                            <input id="state" name="state" type="text" value="{{data[0].State}}"
+                                class="form-control input-md">
 
                         </div>
                     </div>
@@ -114,24 +120,23 @@
                     <div class="form-group py-2">
                         <label class="col-md-4 control-label" for="postal">Postal Code</label>
                         <div class="col-md-2">
-                            <input id="postal" name="postal" type="text" value="{{data[0]["Postal Code"]}}" pattern="[0-9]{5}" class="form-control input-md">
+                            <input id="postal" name="postal" type="text" value="{{data[0]['Postal Code']}}"
+                                pattern="[0-9]{5}" class="form-control input-md">
 
                         </div>
                     </div>
-                    
+
                     <!-- Select Basic -->
                     <div class="form-group py-2">
                         <label class="col-md-4 control-label" for="major_id">Major</label>
                         <div class="col-md-4">
                             <select id="major_id" name="major_id" class="form-control form-select">
                                 {% for major in majors %}
-                                <option value="{{major.major_id}}" {{'selected' if data[0].Major==major.Major
-                                    }}>
+                                <option value="{{major.major_id}}" {{'selected' if data[0].Major==major.Major }}>
                                     {{major.Major}}
                                 </option>
                                 {% endfor %}
-                                <option value="NULL" {{'selected' if data[0].Major==None
-                                    }}>
+                                <option value="NULL" {{'selected' if data[0].Major==None }}>
                                     None</option>
                             </select>
                         </div>
