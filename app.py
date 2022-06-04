@@ -14,6 +14,7 @@ from views.instructors import instructors_view
 from views.courses import courses_view
 from views.courses_instructors import courses_instructors_view
 from views.registrations import registrations_view
+from views.semesters import semesters_view
 
 db_connection = db.connect_to_database()
 app = Flask(__name__)
@@ -27,56 +28,12 @@ app.register_blueprint(instructors_view, url_prefix='/instructors')
 app.register_blueprint(courses_view, url_prefix='/courses')
 app.register_blueprint(courses_instructors_view, url_prefix='/courses_instructors')
 app.register_blueprint(registrations_view, url_prefix='/registrations')
+app.register_blueprint(semesters_view, url_prefix='/semesters')
 
 # Index
 @app.route('/')
 def root():
     return render_template("home.j2")
-
-
-@app.route('/semesters', methods=['POST', 'GET'])
-def semesters():
-
-    db_connection.ping(True)  # ping to avoid timeout
-
-    # Insert Semester
-    if request.method == "POST":
-        semesterid = request.form["semesterid"]
-        semestertitle = request.form["semestertitle"]
-
-        query='''
-        INSERT INTO Semesters 
-        (semester_id, title) 
-        VALUES 
-        (%s, %s)
-        '''
-
-        cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(
-            semesterid, semestertitle))
-        
-        return redirect("/semesters")
-
-    query = '''
-    SELECT semester_id AS "Semester ID", title AS Title
-    FROM Semesters
-    '''
-    cursor = db.execute_query(db_connection=db_connection, query=query)
-    semesters = cursor.fetchall()
-
-    print(semesters)
-
-    return render_template("semesters.j2", semesters=semesters)
-
-
-@app.route('/delete_semester/<semester_id>')
-def delete_semester(semester_id):
-    # mySQL query to delete the semester with our passed id
-    query = "DELETE FROM Semesters WHERE semester_id = %s;"
-    cursor = db.execute_query(
-        db_connection=db_connection, query=query, query_params=(semester_id,))
-
-    # redirect back to Semesters page
-    return redirect("/semesters")
 
 
 @app.route('/grades', methods=['POST', 'GET'])
