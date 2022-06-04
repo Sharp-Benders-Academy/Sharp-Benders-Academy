@@ -40,10 +40,14 @@ if __name__ == "__main__":
 gunicorn -b 0.0.0.0:XXXX -D app:app
 ```
 
-## Image Citations
+## Citations*
 
 **Homepage Rotator Images**
 - (May 2022) The Last Airbender HD wallpaper, image source, https://www.wallpaperflare.com/avatar-digital-wallpaper-avatar-the-last-airbender-wallpaper-270453
 - (May 2022) Avatar Cycle Wallpaper, image source, https://cutewallpaper.org/download.php?file=/22/avatar-cycle-wallpapers/2387024546.jpg
 - (May 2022) Wallpaper Avatar the Last Airbender, image source, https://wallpaperforu.com/wallpaper-avatar-the-last-airbender/
 
+**Website Templates (.j2 files)**
+- (June 2022) Flask-Starter-App, template code resource, https://github.com/osu-cs340-ecampus/flask-starter-app/tree/master/bsg_people_app/templates
+
+**Additional citations given within source code*
