@@ -8,113 +8,22 @@ import database.db_connector as db
 
 # blueprint imports
 from views.students import students_view
+from views.majors import majors_view
+from views.advisors import advisors_view
 
 db_connection = db.connect_to_database()
 app = Flask(__name__)
 
 
-# blueprints
+# register blueprints
 app.register_blueprint(students_view, url_prefix='/students')
+app.register_blueprint(majors_view, url_prefix='/majors')
+app.register_blueprint(advisors_view, url_prefix='/advisors')
 
 # Index
 @app.route('/')
 def root():
     return render_template("home.j2")
-
-
-@app.route('/majors', methods=['POST', 'GET'])
-def majors():
-
-    db_connection.ping(True)  # ping to avoid timeout
-
-    # Insert Major
-    if request.method == "POST":
-        majorid = request.form["majorid"]
-        title = request.form["title"]
-
-        query = '''
-        INSERT INTO Majors 
-        (major_id, title) 
-        VALUES 
-        (%s, %s)
-        '''
-        cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(
-            majorid, title))
-
-        return redirect('/majors')
-
-    # Populate Majors table
-    query = '''
-    SELECT major_id AS "Major ID", title AS Title FROM Majors
-    '''
-    cursor = db.execute_query(db_connection=db_connection, query=query)
-    majors = cursor.fetchall()
-
-    return render_template("majors.j2", majors=majors)
-
-@app.route('/delete_major/<major_id>')
-def delete_major(major_id):
-    # mySQL query to delete the major with our passed id
-    query = "DELETE FROM Majors WHERE major_id = %s;"
-    cursor = db.execute_query(
-        db_connection=db_connection, query=query, query_params=(major_id,))
-
-    # redirect back to Majors page
-    return redirect("/majors")
-
-
-@app.route('/advisors', methods=['POST', 'GET'])
-def advisors():
-
-    db_connection.ping(True)  # ping to avoid timeout
-
-    # Insert Advisor
-    if request.method == "POST":
-        fname = request.form["fname"]
-        lname = request.form["lname"]
-        email = request.form["email"]
-        phone = request.form["phone"]
-        aline1 = request.form["aline1"]
-        aline2 = request.form["aline2"]
-        city = request.form["city"]
-        state = request.form["state"]
-        postal = request.form["postal"]
-
-        query = '''
-        INSERT INTO Advisors 
-        (first_name, last_name, school_email, 
-        phone_number, address_line1, address_line2, 
-        city, state, postal_code) 
-        VALUES 
-        (%s, %s, %s, %s, %s,  NULLIF(%s, ''), %s, %s, %s)
-        '''
-        cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(
-            fname, lname, email, phone, aline1, aline2, city, state, postal))
-
-        return redirect("/advisors")
-
-    # Populate Advisors table
-    query = '''
-    SELECT advisor_id AS ID, first_name AS First, last_name AS Last, school_email AS Email, phone_number AS Phone, 
-    address_line1 AS "Address Line 1", address_line2 AS "Address Line 2", 
-    city AS City, state AS State, postal_code AS "Postal Code"
-    FROM Advisors
-    '''
-    cursor = db.execute_query(db_connection=db_connection, query=query)
-    advisors = cursor.fetchall()
-
-    return render_template("advisors.j2", advisors=advisors)
-
-
-@app.route('/delete_advisor/<int:advisor_id>')
-def delete_advisor(advisor_id):
-    # mySQL query to delete the advisor with our passed id
-    query = "DELETE FROM Advisors WHERE advisor_id = %s;"
-    cursor = db.execute_query(
-        db_connection=db_connection, query=query, query_params=(advisor_id,))
-
-    # redirect back to Advisors page
-    return redirect("/advisors")
 
 
 @app.route('/instructors', methods=['POST', 'GET'])
